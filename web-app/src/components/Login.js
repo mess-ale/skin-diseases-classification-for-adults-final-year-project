@@ -16,7 +16,7 @@ function Login() {
       <form onSubmit={handleSubmit}>
         <fieldset>
           <h2>Log In</h2>
-          <div className="nameform">
+          <div className="loginform">
             <input
               type="text"
               placeholder="Your Name"
@@ -24,7 +24,7 @@ function Login() {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className="nameform">
+          <div className="loginform">
             <input
               type="password"
               placeholder="Your Password"
@@ -32,9 +32,9 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div className="nameform">
+          <div className="loginbutton">
             <button type="submit" disabled={!name || !password}>
-              Submit
+              Log In
             </button>
           </div>
         </fieldset>
