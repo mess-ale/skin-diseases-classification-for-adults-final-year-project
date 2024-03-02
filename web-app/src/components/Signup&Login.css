@@ -5,11 +5,10 @@
 }
 
 .signuppage {
-    min-height: 83vh;
+    min-height: 84vh;
 }
 
 .signuppage {
-  border: 1px solid #ccc;
   border-radius: 21px;
   min-width: 35%;
   margin: 10px;
@@ -69,7 +68,13 @@ button {
     font-size: 16px;
     cursor: pointer;
   }
-  
+
+  button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  /* Additional styles for the disabled state */
+}
+
   button:hover {
     background-color: #0056b3;
   }
