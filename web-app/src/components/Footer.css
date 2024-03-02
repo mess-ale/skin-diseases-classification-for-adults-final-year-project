@@ -1,0 +1,12 @@
+.footer {
+    width: 100%;
+    height: 93px;
+    background-color: #04003F;
+    text-align: center;
+    display: flex;
+}
+
+.h22 {
+    color: #ffffff;
+    margin: auto;
+}

@@ -1,0 +1,84 @@
+.homesignup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signuppage {
+    min-height: 83vh;
+}
+
+.signuppage {
+  border: 1px solid #ccc;
+  border-radius: 21px;
+  min-width: 35%;
+  margin: 10px;
+  background-image: url('./assets/better.jpg');
+}
+
+.signupform {
+    text-align: center;
+    padding: 10px;
+
+}
+
+input {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #000000;
+}
+  
+input:focus {
+    outline: none;
+    border-color: blue;
+    box-shadow: 0 0 5px blue;
+}
+
+.validat {
+    text-align: center;
+    color: #ff0000;
+    font-size: medium;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.creatau {
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 8px;
+    color: #fff;
+    padding-top: 12px;
+}
+
+.signupbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15%;
+}
+
+button {
+    padding: 13px 30px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  button:active {
+    background-color: #004080;
+  }

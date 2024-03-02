@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Footer } from "./Footer.js";
+import './Signup&Login.css'
 
 function SignUp() {
   const [name, setName] = useState("");
@@ -29,10 +31,10 @@ function SignUp() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <h2>Create Account</h2>
+    <>
+      <div className="homesignup">
+        <form className="signuppage" onSubmit={handleSubmit}>
+          <h1 className="creatau">Create Account</h1>
           <div className="signupform">
             <input
               type="text"
@@ -49,8 +51,10 @@ function SignUp() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {emailError && <span>{emailError}</span>}
             <sup>*</sup>
+          </div>
+          <div className="validat">
+            {emailError && <span>{emailError}</span>}
           </div>
           <div className="signupform">
             <input
@@ -68,8 +72,10 @@ function SignUp() {
               value={rePassword}
               onChange={(e) => setRePassword(e.target.value)}
             />
-            {password !== rePassword && "password not match"}
             <sup>*</sup>
+          </div>
+          <div className="validat">
+            {password !== rePassword && "password do not match"}
           </div>
           <div className="signupbutton">
             <button
@@ -85,9 +91,10 @@ function SignUp() {
               Sign Up
             </button>
           </div>
-        </fieldset>
-      </form>
-    </div>
+        </form>
+      </div>
+      <Footer />
+    </>
   );
 }
 
