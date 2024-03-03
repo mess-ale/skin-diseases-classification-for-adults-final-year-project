@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #04003f;
-  height: 88px;
+  height: 12%;
 }
 
 .nav-container {
@@ -77,7 +77,7 @@ img {
 .container {
   display: flex;
   align-items: center;
-  gap: 100px; /* Adjust the spacing between the elements as needed */
+  gap: 10%; /* Adjust the spacing between the elements as needed */
 }
 
 .leftright {
@@ -95,7 +95,7 @@ h3 {
 
 .centerheader {
   margin: 20px 0px 0px 0px;
-  padding: 40px 0px 90px 0px;
+  padding: 2% 0px 7% 0px;
   border-radius: 12px;
   text-align: center;
   background-color: #7633B7;
@@ -110,8 +110,8 @@ h3 {
 
 .endingofpage {
   background-color: #fff;
-  margin: 0px 180px 0px 180px;
-  padding: 40px 0px 150px 0px;
+  margin: 0px 10% 0px 10%;
+  padding: 3% 0px 10% 0px;
   border-radius: 10px;
   margin-bottom: 50px;
   position: relative;
@@ -120,7 +120,7 @@ h3 {
 }
 
 .take {
-  padding: 20px 180px 20px 180px;
+  padding: 20px 15% 20px 15%;
 }
 
 .take h1 {

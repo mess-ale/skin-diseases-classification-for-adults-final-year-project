@@ -1,0 +1,36 @@
+.uploadbody {
+  height: 87vh;
+  display: flex;
+  align-items: center;
+  gap: 8%;
+  margin: 0px 0px 0px 10%;
+}
+
+.dynamicimage {
+  width: 75%;
+  height: 75%;
+  border-radius: 12px;
+  position: relative;
+  text-align: center;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  background-color: #04003F;
+  padding: 10px;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2% 5% 2% 5%;
+}
+
+.uploadbody div h2 {
+  color: #fff;
+  margin-bottom: 8%;
+}
