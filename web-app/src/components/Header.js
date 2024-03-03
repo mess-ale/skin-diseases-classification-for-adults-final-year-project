@@ -13,19 +13,19 @@ function Header() {
 
         <ul>
           <li>
-            <Link to="/upload">Upload</Link>
+            <Link to="/home/upload">Upload</Link>
           </li>
           <li>
             <div className="vertical-line"></div>
           </li>
           <li>
-            <Link to="/preview">Preview</Link>
+            <Link to="/home/preview">Preview</Link>
           </li>
           <li>
             <div className="vertical-line"></div>
           </li>
           <li>
-            <Link to="/prediction">Prediction</Link>
+            <Link to="/home/prediction">Prediction</Link>
           </li>
         </ul>
       </nav>

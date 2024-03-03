@@ -14,9 +14,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/join" element={<Signup />} />
-          <Route path="/upload" element={<Upload />} />
-          <Route path="/preview" element={<Preview />} />
-          <Route path="/prediction" element={<Prediction />} />
+          <Route path="/home/upload" element={<Upload />} />
+          <Route path="/home/preview" element={<Preview />} />
+          <Route path="/home/prediction" element={<Prediction />} />
         </Routes>
       </BrowserRouter>
     </div>

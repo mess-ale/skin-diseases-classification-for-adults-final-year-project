@@ -18,8 +18,8 @@ function Login() {
     <>
       <div className="homesignup">
         <form className="signuppage" onSubmit={handleSubmit}>
-          <h1 className="creatau">Log In</h1>
-          <div className="signupform">
+          <h1 className="loginname">Log In</h1>
+          <div className="loginform">
             <input
               type="text"
               placeholder="Your Name"
@@ -27,7 +27,7 @@ function Login() {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className="signupform">
+          <div className="loginform">
             <input
               type="password"
               placeholder="Your Password"
@@ -37,7 +37,7 @@ function Login() {
           </div>
           <div className="signupbutton">
             <button type="submit" disabled={!name || !password}>
-              <Link to="/upload">Log In</Link>
+              <Link to="/home/upload">Log In</Link>
             </button>
           </div>
         </form>

@@ -15,9 +15,16 @@
   background-image: url('./assets/better.jpg');
 }
 
+
 .signupform {
-    text-align: center;
-    padding: 10px;
+  text-align: center;
+  padding: 10px;
+
+}
+
+.loginform {
+  text-align: center;
+  padding: 5% 0% 5% 0%;
 
 }
 
@@ -45,6 +52,14 @@ input:focus {
 }
 
 .creatau {
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 8px;
+  color: #fff;
+  padding-top: 12px;
+}
+
+.loginname {
     text-align: center;
     text-transform: uppercase;
     padding-bottom: 8px;
