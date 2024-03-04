@@ -4,6 +4,7 @@ import "./home.css";
 import homeimage1 from "./assets/homepage.jpg";
 import { Footer } from "./Footer";
 
+
 export const Home = () => {
   return (
     <>

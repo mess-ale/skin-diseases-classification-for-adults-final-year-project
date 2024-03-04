@@ -6,6 +6,35 @@
   margin: 0px 0px 0px 10%;
 }
 
+.hamburgernav {
+  position: fixed;
+  height: 450vh;
+  width: 20%;
+  background-color: #fff;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.hamburgernav a {
+  color: #000000;
+  font-size: larger;
+}
+.hamburgernav a:hover {
+  background-color: #ff6060;
+  color: #ffffff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 5px;
+}
+
+.hambergernav2 {
+  text-align: center;
+}
+
+.hamnav {
+  padding: 25% 0% 20% 0%;
+}
+
+
 .dynamicimage {
   width: 75%;
   height: 75%;
@@ -33,4 +62,9 @@
 .uploadbody div h2 {
   color: #fff;
   margin-bottom: 8%;
+}
+
+
+@media (max-width: 768px) {
+
 }

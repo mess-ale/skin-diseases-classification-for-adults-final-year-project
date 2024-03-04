@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import { Footer } from "./Footer";
 import "./Upload.css";
 import image1 from "./assets/Gemini_Generated_Image (1).jpg";
+import Hamburger from "./Hamburger";
 
 function Upload() {
   const [imageSrc, setImageSrc] = useState("");
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -17,10 +31,14 @@ function Upload() {
 
     reader.readAsDataURL(file);
   };
-
   return (
     <>
-      <Header />
+      {screenWidth > 700 ? (
+        <Header />
+      ) : (
+        <Hamburger />
+      )}
+
       <div className="uploadbody">
         <div>
           <h2>
