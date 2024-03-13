@@ -2,14 +2,15 @@ import { Divider, Stack } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Header() {
-  const linkStyle = {
-    color: "white",
-    textDecoration: "none",
-    fontSize: "1rem",
-    fontWeight: "bold",
-    marginRight: "1rem",
-  };
+function HomeHeader() {
+
+    const linkStyle = {
+      color: "white",
+      textDecoration: "none",
+      fontSize: "1rem",
+      fontWeight: "bold",
+      marginRight: "1rem",
+    };
 
   return (
     <Stack
@@ -17,12 +18,13 @@ function Header() {
       sx={{
         justifyContent: "space-between",
         backgroundColor: "#04003F",
+        position: "fixed",
+        top: "0",
+        left: "0",
+        width: "100%",
+        zIndex: "310",
         padding: "2.3rem 0rem",
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        width: '100%',
-        zIndex: '888'
+        marginBottom: '1rem'
       }}
     >
       <Stack sx={{ paddingLeft: '5rem'}}>
@@ -32,9 +34,9 @@ function Header() {
       </Stack>
 
       <Stack direction={"row"} spacing={"3rem"} sx={{ paddingRight: '5rem'}}>
-        <Stack>
-          <Link style={linkStyle} to="/home/upload">
-            Upload
+        <Stack >
+          <Link style={linkStyle} to="/login">
+            Log In
           </Link>
         </Stack>
         <Divider
@@ -45,20 +47,8 @@ function Header() {
           }}
         />
         <Stack>
-          <Link style={linkStyle} to="/home/preview">
-            Preview
-          </Link>
-        </Stack>
-        <Divider
-          orientation="vertical"
-          sx={{
-            borderRight: "1px solid #ccc", // Adjust border styles for vertical divider
-            height: "100%", // Set height to match container if needed
-          }}
-        />
-        <Stack>
-          <Link style={linkStyle} to="/home/prediction">
-            Prediction
+          <Link style={linkStyle} to="/join">
+            Join
           </Link>
         </Stack>
       </Stack>
@@ -66,4 +56,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HomeHeader;

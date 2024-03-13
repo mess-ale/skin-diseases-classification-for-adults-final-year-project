@@ -1,10 +1,23 @@
-import React from 'react'
-import "./Footer.css"
+import { Box, Typography } from "@mui/material";
+import React from "react";
 
 export const Footer = () => {
   return (
-    <div className='footer'>
-        <h2 className='h22'>© 2024 Meseret. All Rights Reserved.</h2>
-    </div>
-  )
-}
+    <Box
+      sx={{
+        backgroundColor: "#04003F",
+        padding: "2rem",
+      }}
+    >
+      <Typography
+        variant="subtitle"
+        component="h2"
+        style={{ color: "#fff", textAlign: "center" }}
+      >
+        © 2024 Meseret. All Rights Reserved.
+      </Typography>
+    </Box>
+  );
+};
+
+export default Footer;

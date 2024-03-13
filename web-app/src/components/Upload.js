@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import { Footer } from "./Footer";
-import "./Upload.css";
 import image1 from "./assets/Gemini_Generated_Image (1).jpg";
 import Hamburger from "./Hamburger";
+import { Stack } from "@mui/material";
 
 function Upload() {
   const [imageSrc, setImageSrc] = useState("");
@@ -32,7 +32,13 @@ function Upload() {
     reader.readAsDataURL(file);
   };
   return (
-    <>
+    <Stack 
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       {screenWidth > 700 ? (
         <Header />
       ) : (
@@ -68,8 +74,15 @@ function Upload() {
           )}
         </div>
       </div>
-      <Footer />
-    </>
+      
+      <Stack
+        sx={{
+          marginTop: "auto",
+        }}
+      >
+        <Footer />
+      </Stack>
+    </Stack>
   );
 }
 
