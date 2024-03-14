@@ -3,7 +3,7 @@ import Header from "./Header";
 import { Footer } from "./Footer";
 import image1 from "./assets/Gemini_Generated_Image (1).jpg";
 import Hamburger from "./Hamburger";
-import { Stack } from "@mui/material";
+import { Input, Stack, Typography } from "@mui/material";
 
 function Upload() {
   const [imageSrc, setImageSrc] = useState("");
@@ -14,10 +14,10 @@ function Upload() {
       setScreenWidth(window.innerWidth);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -32,49 +32,66 @@ function Upload() {
     reader.readAsDataURL(file);
   };
   return (
-    <Stack 
+    <Stack
       sx={{
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
       }}
     >
-      {screenWidth > 700 ? (
-        <Header />
-      ) : (
-        <Hamburger />
-      )}
+      {screenWidth > 700 ? <Header /> : <Hamburger />}
 
-      <div className="uploadbody">
-        <div>
-          <h2>
+      <Stack
+        direction={"row"}
+        spacing={"5rem"}
+        sx={{
+          marginTop: "8rem",
+        }}
+      >
+        <Stack sx={{ alignItems: "center", padding: '3rem 0rem 0rem 5rem'}}>
+          <Typography
+            variant="h6"
+            sx={{ color: "#fff", lineHeight: "1.5", }}
+          >
             Get insights into your health. Upload a picture and our AI
             technology will predict potential disease classifications.
-          </h2>
-          <div className="button">
-            <label htmlFor="upload-input" className="label">
-              Upload
-            </label>
-            <input
-              type="file"
-              id="upload-input"
-              className="custom-input"
-              accept="image/*"
-              style={{ display: "none" }}
-              onChange={handleFileUpload}
-            />
-          </div>
-        </div>
+          </Typography>
+          <label
+            htmlFor="upload-input"
+            className="label"
+            style={{
+              padding: "1rem 2rem",
+              fontFamily: "sans-serif",
+              textAlign: "center",
+              textDecoration: "none",
+              backgroundColor: "#fff",
+              color: "#00B9FE",
+              borderRadius: "4px",
+              width: "15%",
+              marginTop: "4rem",
+            }}
+          >
+            Upload
+          </label>
+          <Input
+            type="file"
+            id="upload-input"
+            className="custom-input"
+            accept="image/*"
+            style={{ display: "none" }}
+            onChange={handleFileUpload}
+          />
+        </Stack>
 
-        <div>
+        <Stack sx={{ width: "30%", height: "30%", paddingRight: '5rem',  }}>
           {imageSrc ? (
             <img className="dynamicimage" src={imageSrc} alt="your sample" />
           ) : (
             <img className="dynamicimage" src={image1} alt="your sample" />
           )}
-        </div>
-      </div>
-      
+        </Stack>
+      </Stack>
+
       <Stack
         sx={{
           marginTop: "auto",

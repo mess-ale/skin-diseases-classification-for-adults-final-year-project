@@ -20,44 +20,50 @@ export const Home = () => {
 
       <Stack position="relative">
         <img
-          height={"750rem"}
+          height={"800rem"}
           src={homeimage1}
           alt="for skin disease classification using machine learning code"
         />
-        <Stack
-          position="absolute"
-          top="50%"
-          left="50%"
-          transform="translate(-50%, -50%)"
-          textAlign="center"
-        >
-          <Typography variant="h4">
+        <Stack spacing={"5rem"} sx={{ margin: "-40rem 0rem 6rem 0rem" }}>
+          <Typography
+            variant="h1"
+            sx={{ color: "#00B9FE", fontWeight: "bold", textAlign: "center" }}
+          >
             skin diseases classification for adults
           </Typography>
-          <Typography>
-            Our cutting-edge machine learning system provides accurate
-            classification of adult skin diseases. Upload an image and receive a
-            detailed analysis, empowering you to take informed next steps in
-            your health journey.
-          </Typography>
-          <Link
-            to="/home/upload"
-            style={{
-              backgroundColor: "#f0f0f0",
-              color: "#333",
-              padding: "0.5rem 2.4rem",
-              borderRadius: "5px",
-              "&:hover": {
-                backgroundColor: "#e0e0e0",
-              },
-              textDecoration: "none",
-              fontSize: "1rem",
-              fontWeight: "bold",
-              marginTop: "1rem",
-            }}
+          <Stack
+            direction={"row"}
+            spacing={"11rem"}
+            sx={{ padding: "1rem 10rem" }}
           >
-            Get Started
-          </Link>
+            <Typography
+              variant="h4"
+              sx={{ color: "#fff", lineHeight: "1.5", textAlign: "justify" }}
+            >
+              Our cutting-edge machine learning system provides accurate
+              classification of adult skin diseases. Upload an image and receive
+              a detailed analysis, empowering you to take informed next steps in
+              your health journey.
+            </Typography>
+            <Stack>
+              <Link
+                to="/join"
+                style={{
+                  padding: "1rem 2rem",
+                  width: "100%",
+                  fontFamily: "sans-serif",
+                  textAlign: "center",
+                  textDecoration: "none",
+                  backgroundColor: "#00B9FE",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  marginTop: "4rem",
+                }}
+              >
+                Get Started
+              </Link>
+            </Stack>
+          </Stack>
         </Stack>
       </Stack>
 
