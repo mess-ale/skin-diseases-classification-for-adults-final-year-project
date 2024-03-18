@@ -49,7 +49,7 @@ function SignUp() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          marginBottom: '2rem'
+          marginBottom: "2rem",
         }}
       >
         <Stack
@@ -76,14 +76,26 @@ function SignUp() {
                 placeholder="Your Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                style={{ color: "#000", backgroundColor: "#fff", width: "65%" }}
+                style={{
+                  color: "#000",
+                  borderRadius: "0.25rem",
+                  paddingLeft: "1rem",
+                  backgroundColor: "#fff",
+                  width: "65%",
+                }}
               />
               <Input
                 type="email"
                 placeholder="Your Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{ color: "#000", backgroundColor: "#fff", width: "65%" }}
+                style={{
+                  color: "#000",
+                  borderRadius: "0.25rem",
+                  paddingLeft: "1rem",
+                  backgroundColor: "#fff",
+                  width: "65%",
+                }}
               />
 
               {emailError && <span>{emailError}</span>}
@@ -93,21 +105,32 @@ function SignUp() {
                 placeholder="Your Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{ color: "#000", backgroundColor: "#fff", width: "65%" }}
+                style={{
+                  color: "#000",
+                  borderRadius: "0.25rem",
+                  backgroundColor: "#fff",
+                  width: "65%",
+                  paddingLeft: "1rem",
+                }}
               />
               <Input
                 type="password"
                 placeholder="Repeat Your Password"
                 value={rePassword}
                 onChange={(e) => setRePassword(e.target.value)}
-                style={{ color: "#000", backgroundColor: "#fff", width: "65%" }}
+                style={{
+                  color: "#000",
+                  borderRadius: "0.25rem",
+                  backgroundColor: "#fff",
+                  width: "65%",
+                  paddingLeft: "1rem",
+                }}
               />
-              <Typography sx={{ color: 'red'}}>
-              {password !== rePassword && "password do not match"}
-
+              <Typography sx={{ color: "red" }}>
+                {password !== rePassword && "password do not match"}
               </Typography>
 
-              <Stack sx={{ paddingBottom: "5rem", }}>
+              <Stack sx={{ paddingBottom: "5rem" }}>
                 <Button
                   type="submit"
                   disabled={

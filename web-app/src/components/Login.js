@@ -26,11 +26,13 @@ function Login() {
       <Stack>
         <HomeHeader />
       </Stack>
-      <Stack sx={{
-        display: 'flex',
-        justifyContent: 'center', 
-        alignItems: 'center',
-      }}>
+      <Stack
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Stack
           sx={{
             marginTop: "8rem",
@@ -54,14 +56,26 @@ function Login() {
                 type="text"
                 placeholder="Your Name"
                 value={name}
-                style={{ color: "#000", backgroundColor: "#fff", width: "65%" }}
+                style={{
+                  color: "#000",
+                  borderRadius: "0.25rem",
+                  paddingLeft: '1rem',
+                  backgroundColor: "#fff",
+                  width: "65%",
+                }}
                 onChange={(e) => setName(e.target.value)}
               />
               <Input
                 type="password"
                 placeholder="Your Password"
                 value={password}
-                style={{ color: "#000", backgroundColor: "#fff", width: "65%" }}
+                style={{
+                  color: "#000",
+                  borderRadius: "0.25rem",
+                  paddingLeft: '1rem',
+                  backgroundColor: "#fff",
+                  width: "65%",
+                }}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <Stack sx={{ paddingBottom: "8rem" }}>
