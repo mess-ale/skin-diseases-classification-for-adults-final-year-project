@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { AiOutlineCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { Menu, MenuOpen } from "@mui/icons-material";
 
 const Hamburger = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,13 +9,13 @@ const Hamburger = () => {
     <>
       <div className={isOpen ? "hamburgernav" : "hamburger"}>
         {isOpen ? (
-          <AiOutlineCloseCircle
+          <MenuOpen
             style={{ padding: "15px" }}
             size={24}
             onClick={() => setIsOpen(!isOpen)}
           />
         ) : (
-          <GiHamburgerMenu
+          <Menu
             style={{ padding: "15px" }}
             size={24}
             onClick={() => setIsOpen(!isOpen)}

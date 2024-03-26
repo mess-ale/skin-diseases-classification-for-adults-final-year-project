@@ -1,9 +1,9 @@
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Signup from "./components/SignUp";
-import Upload from "./components/Upload";
-import Preview from "./components/Preview";
-import Prediction from "./components/Prediction";
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
+import Signup from "./Pages/SignUp";
+import Upload from "./Pages/Upload";
+import Preview from "./Pages/Preview";
+import Prediction from "./Pages/Prediction";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {

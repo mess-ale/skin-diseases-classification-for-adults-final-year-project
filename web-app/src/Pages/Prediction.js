@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
-import { Footer } from "./Footer";
-import Hamburger from "./Hamburger";
+import Header from "../components/Header";
+import { Footer } from "../components/Footer";
+import Hamburger from "../components/Hamburger";
 import { Stack } from "@mui/material";
 
 function Prediction() {

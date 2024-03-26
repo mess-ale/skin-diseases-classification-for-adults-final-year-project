@@ -1,15 +1,30 @@
 import React, { useState } from "react";
-import { Footer } from "./Footer";
-import { Link } from "react-router-dom";
+import { Footer } from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 import { Button, Input, Stack, Typography } from "@mui/material";
-import HomeHeader from "./HomeHeader";
-import logsignimg from "./assets/better.jpg";
+import HomeHeader from "../components/HomeHeader";
+import LoginIcon from "@mui/icons-material/Login";
+import logsignimg from "../assets/better.jpg";
 
 function Login() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [nameError, setNameError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const history = useNavigate();
 
   const handleSubmit = (e) => {
+    if (name === "") {
+      setNameError(true);
+    }
+    if (password === "") {
+      setPasswordError(true);
+    }
+
+    if (!name && !password) {
+      history.push("/home/upload");
+    }
+
     e.preventDefault();
     setName("");
     setPassword("");
@@ -37,7 +52,7 @@ function Login() {
           sx={{
             marginTop: "8rem",
             backgroundImage: `url(${logsignimg})`,
-            width: "37%",
+            width: "30%",
             display: "flex",
             borderRadius: "1rem",
             justifyContent: "center",
@@ -56,10 +71,12 @@ function Login() {
                 type="text"
                 placeholder="Your Name"
                 value={name}
+                required
+                error={nameError}
                 style={{
                   color: "#000",
                   borderRadius: "0.25rem",
-                  paddingLeft: '1rem',
+                  paddingLeft: "1rem",
                   backgroundColor: "#fff",
                   width: "65%",
                 }}
@@ -67,12 +84,14 @@ function Login() {
               />
               <Input
                 type="password"
+                required
                 placeholder="Your Password"
+                error={passwordError}
                 value={password}
                 style={{
                   color: "#000",
                   borderRadius: "0.25rem",
-                  paddingLeft: '1rem',
+                  paddingLeft: "1rem",
                   backgroundColor: "#fff",
                   width: "65%",
                 }}
@@ -81,27 +100,18 @@ function Login() {
               <Stack sx={{ paddingBottom: "8rem" }}>
                 <Button
                   type="submit"
-                  disabled={!name || !password}
+                  endIcon={<LoginIcon />}
                   sx={{
-                    backgroundColor: "#f0f0f0",
-                    color: "#333",
-                    padding: "0.5rem 2.4rem",
+                    backgroundColor: "#00B9FE",
                     borderRadius: "5px",
+                    color: "#333",
+                    padding: "0.3rem 2rem",
                     "&:hover": {
                       backgroundColor: "#e0e0e0",
                     },
                   }}
                 >
-                  <Link
-                    to="/home/upload"
-                    style={{
-                      textDecoration: "none",
-                      fontSize: "1rem",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {!name || !password ? "fill name and password" : "Log In"}
-                  </Link>
+                  Log In
                 </Button>
               </Stack>
             </Stack>

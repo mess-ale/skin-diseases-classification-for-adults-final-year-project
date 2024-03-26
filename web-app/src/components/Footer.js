@@ -1,22 +1,21 @@
-import { Box, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import React from "react";
 
 export const Footer = () => {
   return (
-    <Box
+    <Stack
       sx={{
         backgroundColor: "#04003F",
-        padding: "2rem",
       }}
     >
       <Typography
         variant="subtitle"
         component="h2"
-        style={{ color: "#fff", textAlign: "center" }}
+        sx={{ color: "#fff", textAlign: "center", padding: "2rem" }}
       >
         © 2024 Meseret. All Rights Reserved.
       </Typography>
-    </Box>
+    </Stack>
   );
 };
 

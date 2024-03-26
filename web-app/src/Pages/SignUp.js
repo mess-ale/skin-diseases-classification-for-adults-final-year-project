@@ -1,24 +1,45 @@
 import React, { useState } from "react";
-import { Footer } from "./Footer.js";
+import { Footer } from "../components/Footer.js";
 import { Stack, Typography, Input, Button } from "@mui/material";
-import HomeHeader from "./HomeHeader.js";
-import logsignimg from "./assets/better.jpg";
-import { Link } from "react-router-dom";
+import HomeHeader from "../components/HomeHeader.js";
+import logsignimg from "../assets/better.jpg";
+import LoginIcon from "@mui/icons-material/Login";
 
 function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
-  const [emailError, setEmailError] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [rePasswordError, setRePasswordError] = useState("");
+  const [emailError, setEmailError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!validateEmail(email)) {
-      setEmailError("Please enter a valid email address.");
-      console.log("email problem");
-      return;
+    if (!email) {
+      setEmailError(true);
+    }
+
+    if (!name) {
+      setNameError(true);
+    }
+    if (!password) {
+      setPasswordError(true);
+    }
+    if (!rePassword) {
+      setRePasswordError(true);
+    }
+
+    if (
+      !name ||
+      !password ||
+      !rePassword ||
+      password !== rePassword ||
+      !email
+    ) {
+      // history.push("/home/upload");
     }
 
     setName("");
@@ -26,11 +47,6 @@ function SignUp() {
     setRePassword("");
     setEmail("");
     console.log("sign up seccessesful");
-  };
-
-  const validateEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
   };
 
   return (
@@ -56,7 +72,7 @@ function SignUp() {
           sx={{
             marginTop: "8rem",
             backgroundImage: `url(${logsignimg})`,
-            width: "37%",
+            width: "30%",
             display: "flex",
             borderRadius: "1rem",
             justifyContent: "center",
@@ -75,6 +91,8 @@ function SignUp() {
                 type="text"
                 placeholder="Your Name"
                 value={name}
+                required
+                error={nameError}
                 onChange={(e) => setName(e.target.value)}
                 style={{
                   color: "#000",
@@ -88,6 +106,8 @@ function SignUp() {
                 type="email"
                 placeholder="Your Email"
                 value={email}
+                required
+                error={emailError}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{
                   color: "#000",
@@ -98,10 +118,10 @@ function SignUp() {
                 }}
               />
 
-              {emailError && <span>{emailError}</span>}
-
               <Input
                 type="password"
+                required
+                error={passwordError}
                 placeholder="Your Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -115,6 +135,8 @@ function SignUp() {
               />
               <Input
                 type="password"
+                required
+                error={rePasswordError}
                 placeholder="Repeat Your Password"
                 value={rePassword}
                 onChange={(e) => setRePassword(e.target.value)}
@@ -133,15 +155,9 @@ function SignUp() {
               <Stack sx={{ paddingBottom: "5rem" }}>
                 <Button
                   type="submit"
-                  disabled={
-                    !name ||
-                    !password ||
-                    !rePassword ||
-                    password !== rePassword ||
-                    !email
-                  }
+                  endIcon={<LoginIcon />}
                   sx={{
-                    backgroundColor: "#f0f0f0",
+                    backgroundColor: "#00B9FE",
                     color: "#333",
                     padding: "0.3rem 2rem",
                     borderRadius: "5px",
@@ -150,22 +166,7 @@ function SignUp() {
                     },
                   }}
                 >
-                  <Link
-                    to="/home/upload"
-                    style={{
-                      textDecoration: "none",
-                      fontSize: "1rem",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {!name ||
-                    !password ||
-                    !rePassword ||
-                    password !== rePassword ||
-                    !email
-                      ? "enter all inputs"
-                      : "Sign Up"}
-                  </Link>
+                  Sign Up
                 </Button>
               </Stack>
             </Stack>

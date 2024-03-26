@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
-import { Footer } from "./Footer";
-import image1 from "./assets/Gemini_Generated_Image (1).jpg";
-import Hamburger from "./Hamburger";
+import Header from "../components/Header";
+import { Footer } from "../components/Footer";
+import image1 from "../assets/Gemini_Generated_Image (1).jpg";
+import Hamburger from "../components/Hamburger";
 import { Input, Stack, Typography } from "@mui/material";
 
 function Upload() {
@@ -60,7 +60,7 @@ function Upload() {
             htmlFor="upload-input"
             className="label"
             style={{
-              padding: "1rem 2rem",
+              padding: "0.8rem 1.5rem",
               fontFamily: "sans-serif",
               textAlign: "center",
               textDecoration: "none",
@@ -76,7 +76,6 @@ function Upload() {
           <Input
             type="file"
             id="upload-input"
-            className="custom-input"
             accept="image/*"
             style={{ display: "none" }}
             onChange={handleFileUpload}

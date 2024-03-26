@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import homeimage1 from "./assets/homepage.jpg";
-import { Footer } from "./Footer";
+import homeimage1 from "../assets/homepage.jpg";
+import { Footer } from "../components/Footer";
 import { Stack, Typography } from "@mui/material";
-import HomeHeader from "./HomeHeader";
+import HomeHeader from "../components/HomeHeader";
 
 export const Home = () => {
   return (
@@ -25,7 +25,7 @@ export const Home = () => {
           alt="for skin disease classification using machine learning code"
         />
         <Stack spacing={"5rem"} sx={{ margin: "-40rem 0rem 6rem 0rem" }}>
-          <Typography
+          <Typography 
             variant="h1"
             sx={{ color: "#00B9FE", fontWeight: "bold", textAlign: "center" }}
           >
