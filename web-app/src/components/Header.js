@@ -6,7 +6,7 @@ function Header() {
   const linkStyle = {
     color: "white",
     textDecoration: "none",
-    fontSize: "1rem",
+    fontSize: {sm: '0.7rem' , md: "12rem"},
     fontWeight: "bold",
     marginRight: "1rem",
   };
@@ -25,7 +25,7 @@ function Header() {
         zIndex: '888'
       }}
     >
-      <Stack sx={{ paddingLeft: '5rem'}}>
+      <Stack sx={{ paddingLeft: {sm:'2rem', md: '5rem'}}}>
         <Link style={linkStyle} to="/">
           Home
         </Link>

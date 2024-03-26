@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, MenuOpen } from "@mui/icons-material";
-import { Container, Stack } from "@mui/material";
+import { Stack, Container } from "@mui/material";
 
-const Hamburger = () => {
+const HamburgerHome = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const linkStyle = {
@@ -44,19 +44,16 @@ const Hamburger = () => {
                   Home
                 </Link>
               </Stack>
+
               <Stack>
-                <Link style={linkStyle} to="/home/upload">
-                  Upload
+                <Link style={linkStyle} to="/login">
+                  Log In
                 </Link>
               </Stack>
+
               <Stack>
-                <Link style={linkStyle} to="/home/preview">
-                  Preview
-                </Link>
-              </Stack>
-              <Stack>
-                <Link style={linkStyle} to="/home/prediction">
-                  Prediction
+                <Link style={linkStyle} to="/join">
+                  Join
                 </Link>
               </Stack>
             </Stack>
@@ -67,4 +64,4 @@ const Hamburger = () => {
   );
 };
 
-export default Hamburger;
+export default HamburgerHome;

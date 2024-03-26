@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Footer } from "../components/Footer.js";
 import { Stack, Typography, Input, Button } from "@mui/material";
 import HomeHeader from "../components/HomeHeader.js";
 import logsignimg from "../assets/better.jpg";
 import LoginIcon from "@mui/icons-material/Login";
+import HamburgerHome from "../components/HamburgerHome.js";
 
 function SignUp() {
   const [name, setName] = useState("");
@@ -14,6 +15,7 @@ function SignUp() {
   const [passwordError, setPasswordError] = useState("");
   const [rePasswordError, setRePasswordError] = useState("");
   const [emailError, setEmailError] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,6 +51,17 @@ function SignUp() {
     console.log("sign up seccessesful");
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <Stack
       sx={{
@@ -57,8 +70,15 @@ function SignUp() {
         flexDirection: "column",
       }}
     >
-      <Stack>
-        <HomeHeader />
+      
+      <Stack
+        sx={
+          screenWidth > 700
+            ? { marginBottom: "8rem" }
+            : { marginBottom: "0rem" }
+        }
+      >
+        {screenWidth > 700 ? <HomeHeader /> : <HamburgerHome />}
       </Stack>
       <Stack
         sx={{
@@ -70,7 +90,6 @@ function SignUp() {
       >
         <Stack
           sx={{
-            marginTop: "8rem",
             backgroundImage: `url(${logsignimg})`,
             width: "30%",
             display: "flex",

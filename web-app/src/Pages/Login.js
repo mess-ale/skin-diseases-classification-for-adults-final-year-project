@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Footer } from "../components/Footer";
-import { useNavigate } from "react-router-dom";
 import { Button, Input, Stack, Typography } from "@mui/material";
 import HomeHeader from "../components/HomeHeader";
 import LoginIcon from "@mui/icons-material/Login";
 import logsignimg from "../assets/better.jpg";
+import HamburgerHome from "../components/HamburgerHome";
 
 function Login() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [nameError, setNameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const history = useNavigate();
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const handleSubmit = (e) => {
     if (name === "") {
@@ -22,13 +22,25 @@ function Login() {
     }
 
     if (!name && !password) {
-      history.push("/home/upload");
+      // history.push("/home/upload");
     }
 
     e.preventDefault();
     setName("");
     setPassword("");
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <Stack
@@ -38,8 +50,14 @@ function Login() {
         flexDirection: "column",
       }}
     >
-      <Stack>
-        <HomeHeader />
+      <Stack
+        sx={
+          screenWidth > 700
+            ? { marginBottom: "8rem" }
+            : { marginBottom: "0rem" }
+        }
+      >
+        {screenWidth > 700 ? <HomeHeader /> : <HamburgerHome />}
       </Stack>
       <Stack
         sx={{
@@ -50,7 +68,6 @@ function Login() {
       >
         <Stack
           sx={{
-            marginTop: "8rem",
             backgroundImage: `url(${logsignimg})`,
             width: "30%",
             display: "flex",

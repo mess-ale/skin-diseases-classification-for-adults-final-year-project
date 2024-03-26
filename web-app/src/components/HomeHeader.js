@@ -3,14 +3,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function HomeHeader() {
-
-    const linkStyle = {
-      color: "white",
-      textDecoration: "none",
-      fontSize: "1rem",
-      fontWeight: "bold",
-      marginRight: "1rem",
-    };
+  const linkStyle = {
+    color: "white",
+    textDecoration: "none",
+    fontSize: { sm: '0.7rem', lg: '4rem' },
+    fontWeight: "bold",
+    marginRight: "1rem",
+  };
 
   return (
     <Stack
@@ -24,17 +23,16 @@ function HomeHeader() {
         width: "100%",
         zIndex: "310",
         padding: "2.3rem 0rem",
-        marginBottom: '1rem'
       }}
     >
-      <Stack sx={{ paddingLeft: '5rem'}}>
+      <Stack sx={{ paddingLeft: "5rem" }}>
         <Link style={linkStyle} to="/">
           Home
         </Link>
       </Stack>
 
-      <Stack direction={"row"} spacing={"3rem"} sx={{ paddingRight: '5rem'}}>
-        <Stack >
+      <Stack direction={"row"} spacing={"3rem"} sx={{ paddingRight: "5rem" }}>
+        <Stack>
           <Link style={linkStyle} to="/login">
             Log In
           </Link>
