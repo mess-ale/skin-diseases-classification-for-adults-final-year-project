@@ -6,7 +6,7 @@ function HomeHeader() {
   const linkStyle = {
     color: "white",
     textDecoration: "none",
-    fontSize: { sm: '0.7rem', lg: '4rem' },
+    fontSize: { sm: "1rem", md: "2rem" },
     fontWeight: "bold",
     marginRight: "1rem",
   };
@@ -22,16 +22,20 @@ function HomeHeader() {
         left: "0",
         width: "100%",
         zIndex: "310",
-        padding: "2.3rem 0rem",
+        padding: { xs: "1.7rem 0rem", sm: "1.9rem 0rem", md: "2.3rem 0rem" },
       }}
     >
-      <Stack sx={{ paddingLeft: "5rem" }}>
+      <Stack sx={{ paddingLeft: { sm: "2.5rem", md: "3.8rem", lg: "5rem" } }}>
         <Link style={linkStyle} to="/">
           Home
         </Link>
       </Stack>
 
-      <Stack direction={"row"} spacing={"3rem"} sx={{ paddingRight: "5rem" }}>
+      <Stack
+        direction={"row"}
+        spacing={{ sm: "2rem", md: "2.5rem", lg: "3rem" }}
+        sx={{ paddingRight: { sm: "2.5rem", md: "3.8rem", lg: "5rem" } }}
+      >
         <Stack>
           <Link style={linkStyle} to="/login">
             Log In

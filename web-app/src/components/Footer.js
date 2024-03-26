@@ -10,8 +10,12 @@ export const Footer = () => {
     >
       <Typography
         variant="subtitle"
-        component="h2"
-        sx={{ color: "#fff", textAlign: "center", padding: "2rem" }}
+        sx={{
+          color: "#fff",
+          textAlign: "center",
+          padding: { xs: "1.3rem", sm: "1.6rem", md: "2rem" },
+          fontSize: { xs: "0.8rem", sm: "1rem", md: "1.25rem", lg: "1.5rem" },
+        }}
       >
         © 2024 Meseret. All Rights Reserved.
       </Typography>

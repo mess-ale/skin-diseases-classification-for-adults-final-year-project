@@ -153,7 +153,7 @@ export const Home = () => {
       <Container
         sx={{
           marginTop: { xs: "5rem", sm: "6rem", md: "7rem" },
-          marginBottom: { xs: "10rem", sm: "13rem", md: "17rem" },
+          marginBottom: { xs: "7rem", sm: "9rem", md: "14rem" },
         }}
       >
         <Grid container spacing={"4rem"}>

@@ -70,7 +70,6 @@ function SignUp() {
         flexDirection: "column",
       }}
     >
-      
       <Stack
         sx={
           screenWidth > 700
@@ -91,7 +90,7 @@ function SignUp() {
         <Stack
           sx={{
             backgroundImage: `url(${logsignimg})`,
-            width: "30%",
+            width: { xs: "70%", sm: "58%", md: "40%", lg: "30%" },
             display: "flex",
             borderRadius: "1rem",
             justifyContent: "center",
@@ -99,13 +98,34 @@ function SignUp() {
         >
           <form onSubmit={handleSubmit}>
             <Typography
-              variant="subtitle"
-              component={"h1"}
-              style={{ color: "#fff", textAlign: "center", padding: "2rem" }}
+              sx={{
+                color: "#fff",
+                textAlign: "center",
+                padding: {
+                  xs: "1.2rem",
+                  sm: "1.5rem",
+                  md: "1.75rem",
+                  lg: "2rem",
+                },
+                fontSize: {
+                  xs: "1rem",
+                  sm: "1.25rem",
+                  md: "1.5rem",
+                },
+                fontWeight: "bold",
+                textTransform: "uppercase",
+              }}
             >
               Create Account
             </Typography>
-            <Stack spacing={"2rem"} sx={{ alignItems: "center" }}>
+            <Stack
+              spacing={{
+                xs: "1rem",
+                sm: "1.5rem",
+                md: "2rem",
+              }}
+              sx={{ alignItems: "center" }}
+            >
               <Input
                 type="text"
                 placeholder="Your Name"
@@ -171,7 +191,7 @@ function SignUp() {
                 {password !== rePassword && "password do not match"}
               </Typography>
 
-              <Stack sx={{ paddingBottom: "5rem" }}>
+              <Stack>
                 <Button
                   type="submit"
                   endIcon={<LoginIcon />}
@@ -179,6 +199,7 @@ function SignUp() {
                     backgroundColor: "#00B9FE",
                     color: "#333",
                     padding: "0.3rem 2rem",
+                    marginBottom: "4rem",
                     borderRadius: "5px",
                     "&:hover": {
                       backgroundColor: "#e0e0e0",

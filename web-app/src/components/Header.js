@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 
 function Header() {
   const linkStyle = {
-    color: "white",
+    fontSize: { sm: "0.9rem", md: "0.95rem", lg: "1rem" },
+  };
+
+  const linkStyle2 = {
     textDecoration: "none",
-    fontSize: {sm: '0.7rem' , md: "12rem"},
     fontWeight: "bold",
-    marginRight: "1rem",
+    color: "white",
+    marginRight: { sm: "0.3rem", md: "0.4rem", lg: "0.5rem" },
   };
 
   return (
@@ -17,23 +20,30 @@ function Header() {
       sx={{
         justifyContent: "space-between",
         backgroundColor: "#04003F",
-        padding: "2.3rem 0rem",
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        width: '100%',
-        zIndex: '888'
+        padding: { sm: "1.7rem 0rem", md: "2rem 0rem", lg: "2.3rem 0rem" },
+        position: "fixed",
+        top: "0",
+        left: "0",
+        width: "100%",
+        zIndex: "888",
       }}
     >
-      <Stack sx={{ paddingLeft: {sm:'2rem', md: '5rem'}}}>
-        <Link style={linkStyle} to="/">
+      <Stack
+        paddingLeft={{ sm: "2rem", md: "3.5rem", lg: "5rem" }}
+        sx={linkStyle}
+      >
+        <Link style={linkStyle2} to="/">
           Home
         </Link>
       </Stack>
 
-      <Stack direction={"row"} spacing={"3rem"} sx={{ paddingRight: '5rem'}}>
-        <Stack>
-          <Link style={linkStyle} to="/home/upload">
+      <Stack
+        direction={"row"}
+        spacing={{ sm: "2rem", md: "2.5rem", lg: "3rem" }}
+        sx={{ paddingRight: { sm: "2rem", md: "3.5rem", lg: "5rem" } }}
+      >
+        <Stack sx={linkStyle}>
+          <Link style={linkStyle2} to="/home/upload">
             Upload
           </Link>
         </Stack>
@@ -44,8 +54,8 @@ function Header() {
             height: "100%", // Set height to match container if needed
           }}
         />
-        <Stack>
-          <Link style={linkStyle} to="/home/preview">
+        <Stack sx={linkStyle}>
+          <Link style={linkStyle2} to="/home/preview">
             Preview
           </Link>
         </Stack>
@@ -56,8 +66,8 @@ function Header() {
             height: "100%", // Set height to match container if needed
           }}
         />
-        <Stack>
-          <Link style={linkStyle} to="/home/prediction">
+        <Stack sx={linkStyle}>
+          <Link style={linkStyle2} to="/home/prediction">
             Prediction
           </Link>
         </Stack>

@@ -69,7 +69,7 @@ function Login() {
         <Stack
           sx={{
             backgroundImage: `url(${logsignimg})`,
-            width: "30%",
+            width: { xs: "70%", sm: "58%", md: "40%", lg: "30%" },
             display: "flex",
             borderRadius: "1rem",
             justifyContent: "center",
@@ -77,13 +77,36 @@ function Login() {
         >
           <form onSubmit={handleSubmit}>
             <Typography
-              variant="subtitle"
-              component={"h1"}
-              style={{ color: "#fff", textAlign: "center", padding: "2rem" }}
+              sx={{
+                color: "#fff",
+                textAlign: "center",
+                padding: {
+                  xs: "1.2rem",
+                  sm: "1.5rem",
+                  md: "1.75rem",
+                  lg: "2rem",
+                },
+                fontSize: {
+                  xs: "1.2rem",
+                  sm: "1.5rem",
+                  md: "1.75rem",
+                  lg: "2rem",
+                },
+                textTransform: "uppercase",
+                fontWeight: "bold",
+              }}
             >
               Log In
             </Typography>
-            <Stack spacing={"3rem"} sx={{ alignItems: "center" }}>
+            <Stack
+              spacing={{
+                xs: "1.7rem",
+                sm: "2.5rem",
+                md: "2.75rem",
+                lg: "3rem",
+              }}
+              sx={{ alignItems: "center" }}
+            >
               <Input
                 type="text"
                 placeholder="Your Name"
@@ -114,7 +137,12 @@ function Login() {
                 }}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <Stack sx={{ paddingBottom: "8rem" }}>
+              <Stack
+                sx={{
+                  paddingBottom: { xs: "4rem", sm: "4.5rem", md: "5rem" },
+                  paddingTop: { xs: "1.5rem", sm: "1.75rem", md: "2rem" },
+                }}
+              >
                 <Button
                   type="submit"
                   endIcon={<LoginIcon />}
@@ -122,7 +150,11 @@ function Login() {
                     backgroundColor: "#00B9FE",
                     borderRadius: "5px",
                     color: "#333",
-                    padding: "0.3rem 2rem",
+                    padding: {
+                      xs: "0.2rem 1.5rem",
+                      sm: "0.2rem 1.75rem",
+                      md: "0.3rem 2rem",
+                    },
                     "&:hover": {
                       backgroundColor: "#e0e0e0",
                     },
