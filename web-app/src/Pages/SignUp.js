@@ -133,6 +133,14 @@ function SignUp() {
                 required
                 error={nameError}
                 onChange={(e) => setName(e.target.value)}
+                sx={{
+                  fontSize: {
+                    xs: "0.75rem",
+                    sm: "0.8rem",
+                    md: "1rem",
+                    lg: "1.1rem",
+                  },
+                }}
                 style={{
                   color: "#000",
                   borderRadius: "0.25rem",
@@ -148,6 +156,14 @@ function SignUp() {
                 required
                 error={emailError}
                 onChange={(e) => setEmail(e.target.value)}
+                sx={{
+                  fontSize: {
+                    xs: "0.75rem",
+                    sm: "0.8rem",
+                    md: "1rem",
+                    lg: "1.1rem",
+                  },
+                }}
                 style={{
                   color: "#000",
                   borderRadius: "0.25rem",
@@ -164,6 +180,14 @@ function SignUp() {
                 placeholder="Your Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                sx={{
+                  fontSize: {
+                    xs: "0.75rem",
+                    sm: "0.8rem",
+                    md: "1rem",
+                    lg: "1.1rem",
+                  },
+                }}
                 style={{
                   color: "#000",
                   borderRadius: "0.25rem",
@@ -179,6 +203,14 @@ function SignUp() {
                 placeholder="Repeat Your Password"
                 value={rePassword}
                 onChange={(e) => setRePassword(e.target.value)}
+                sx={{
+                  fontSize: {
+                    xs: "0.75rem",
+                    sm: "0.8rem",
+                    md: "1rem",
+                    lg: "1.1rem",
+                  },
+                }}
                 style={{
                   color: "#000",
                   borderRadius: "0.25rem",

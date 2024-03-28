@@ -1,4 +1,4 @@
-import { Divider, Stack } from "@mui/material";
+import { Box, Divider, Stack } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -25,20 +25,50 @@ function HomeHeader() {
         padding: { xs: "1.7rem 0rem", sm: "1.9rem 0rem", md: "2.3rem 0rem" },
       }}
     >
-      <Stack sx={{ paddingLeft: { sm: "2.5rem", md: "3.8rem", lg: "5rem" } }}>
+      <Stack sx={{ paddingLeft: { sm: "2rem", md: "3.3rem", lg: "4rem" } }}>
         <Link style={linkStyle} to="/">
-          Home
+          <Box
+            sx={{
+              padding: "0.2rem 1rem 0.2rem 1rem",
+              "&:hover": {
+                backgroundColor: "#fff",
+                color: "#000",
+                borderRadius: {
+                  sm: "0.4rem",
+                  md: "0.4.5rem",
+                  lg: "0.5rem",
+                },
+              },
+            }}
+          >
+            Home
+          </Box>
         </Link>
       </Stack>
 
       <Stack
         direction={"row"}
         spacing={{ sm: "2rem", md: "2.5rem", lg: "3rem" }}
-        sx={{ paddingRight: { sm: "2.5rem", md: "3.8rem", lg: "5rem" } }}
+        sx={{ paddingRight: { sm: "2rem", md: "3.3rem", lg: "4rem" } }}
       >
         <Stack>
           <Link style={linkStyle} to="/login">
-            Log In
+            <Box
+              sx={{
+                padding: "0.2rem 1rem 0.2rem 1rem",
+                "&:hover": {
+                  backgroundColor: "#fff",
+                  color: "#000",
+                  borderRadius: {
+                    sm: "0.4rem",
+                    md: "0.4.5rem",
+                    lg: "0.5rem",
+                  },
+                },
+              }}
+            >
+              Log In
+            </Box>
           </Link>
         </Stack>
         <Divider
@@ -50,7 +80,22 @@ function HomeHeader() {
         />
         <Stack>
           <Link style={linkStyle} to="/join">
-            Join
+            <Box
+              sx={{
+                padding: "0.2rem 1rem 0.2rem 1rem",
+                "&:hover": {
+                  backgroundColor: "#fff",
+                  color: "#000",
+                  borderRadius: {
+                    sm: "0.4rem",
+                    md: "0.4.5rem",
+                    lg: "0.5rem",
+                  },
+                },
+              }}
+            >
+              Join
+            </Box>
           </Link>
         </Stack>
       </Stack>

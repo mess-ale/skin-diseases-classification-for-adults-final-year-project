@@ -113,6 +113,14 @@ function Login() {
                 value={name}
                 required
                 error={nameError}
+                sx={{
+                  fontSize: {
+                    xs: "0.75rem",
+                    sm: "0.8rem",
+                    md: "1rem",
+                    lg: "1.1rem",
+                  },
+                }}
                 style={{
                   color: "#000",
                   borderRadius: "0.25rem",
@@ -128,11 +136,19 @@ function Login() {
                 placeholder="Your Password"
                 error={passwordError}
                 value={password}
+                sx={{
+                  fontSize: {
+                    xs: "0.75rem",
+                    sm: "0.8rem",
+                    md: "1rem",
+                    lg: "1.1rem",
+                  },
+                }}
                 style={{
                   color: "#000",
                   borderRadius: "0.25rem",
-                  paddingLeft: "1rem",
                   backgroundColor: "#fff",
+                  paddingLeft: '1rem',
                   width: "65%",
                 }}
                 onChange={(e) => setPassword(e.target.value)}

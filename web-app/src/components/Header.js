@@ -1,4 +1,4 @@
-import { Divider, Stack } from "@mui/material";
+import { Box, Divider, Stack } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -33,7 +33,22 @@ function Header() {
         sx={linkStyle}
       >
         <Link style={linkStyle2} to="/">
-          Home
+          <Box
+            sx={{
+              padding: "0.2rem 1rem 0.2rem 1rem",
+              "&:hover": {
+                backgroundColor: "#fff",
+                color: "#000",
+                borderRadius: {
+                  sm: "0.4rem",
+                  md: "0.4.5rem",
+                  lg: "0.5rem",
+                },
+              },
+            }}
+          >
+            Home
+          </Box>
         </Link>
       </Stack>
 
@@ -44,7 +59,22 @@ function Header() {
       >
         <Stack sx={linkStyle}>
           <Link style={linkStyle2} to="/home/upload">
-            Upload
+            <Box
+              sx={{
+                padding: "0.2rem 1rem 0.2rem 1rem",
+                "&:hover": {
+                  backgroundColor: "#fff",
+                  color: "#000",
+                  borderRadius: {
+                    sm: "0.4rem",
+                    md: "0.4.5rem",
+                    lg: "0.5rem",
+                  },
+                },
+              }}
+            >
+              Upload
+            </Box>
           </Link>
         </Stack>
         <Divider
@@ -56,7 +86,22 @@ function Header() {
         />
         <Stack sx={linkStyle}>
           <Link style={linkStyle2} to="/home/preview">
-            Preview
+            <Box
+              sx={{
+                padding: "0.2rem 1rem 0.2rem 1rem",
+                "&:hover": {
+                  backgroundColor: "#fff",
+                  color: "#000",
+                  borderRadius: {
+                    sm: "0.4rem",
+                    md: "0.4.5rem",
+                    lg: "0.5rem",
+                  },
+                },
+              }}
+            >
+              Preview
+            </Box>
           </Link>
         </Stack>
         <Divider
@@ -68,7 +113,22 @@ function Header() {
         />
         <Stack sx={linkStyle}>
           <Link style={linkStyle2} to="/home/prediction">
-            Prediction
+            <Box
+              sx={{
+                padding: "0.2rem 1rem 0.2rem 1rem",
+                "&:hover": {
+                  backgroundColor: "#fff",
+                  color: "#000",
+                  borderRadius: {
+                    sm: "0.4rem",
+                    md: "0.4.5rem",
+                    lg: "0.5rem",
+                  },
+                },
+              }}
+            >
+              Prediction
+            </Box>
           </Link>
         </Stack>
       </Stack>
