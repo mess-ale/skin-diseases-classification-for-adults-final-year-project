@@ -7,13 +7,14 @@ const Hamburger = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const linkStyle = {
-    backgroundColor: "#04003F",
+    backgroundImage: "linear-gradient(to right, #00C6CF, #7FD1AE)",
     textAlign: "center",
     padding: "0.5rem",
     color: "white",
     textDecoration: "none",
     fontSize: "0.8rem",
     fontWeight: "bold",
+    borderRadius: '0.5rem',
   };
 
   return (

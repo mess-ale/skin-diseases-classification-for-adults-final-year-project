@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import { Footer } from "../components/Footer";
 import image1 from "../assets/Gemini_Generated_Image (1).jpg";
 import Hamburger from "../components/Hamburger";
-import { Input, Stack, Typography } from "@mui/material";
+import { Container, Input, Stack, Typography } from "@mui/material";
 
 function Upload() {
   const [imageSrc, setImageSrc] = useState("");
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const isMobile = screenWidth > 700;
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -41,120 +26,172 @@ function Upload() {
         flexDirection: "column",
       }}
     >
-      {isMobile ? <Header /> : <Hamburger />}
-
       <Stack
-        direction={{ sm: "column", md: "row" }}
-        spacing={{ xs: "3rem", sm: "3.5rem", md: "4rem", lg: "5rem" }}
-        margin={{
-          xs: "2rem 4rem 0rem 4rem",
-          sm: "7rem 4rem 0rem 4rem",
-          md: "10rem 6rem 0rem 6rem",
-          lg: "10rem 10rem 0rem 10rem",
+        sx={{
+          marginBottom: { sm: "0rem", md: "7rem" },
         }}
       >
         <Stack
-          direction={{ xs: "column", sm: "row", md: "column" }}
-          spacing={{ xs: "3rem", sm: "3.5rem", md: "4rem", lg: "5rem" }}
-          sx={{ alignItems: "center" }}
-        >
-          <Typography
-            variant="h6"
-            sx={{
-              fontSize: {
-                xs: "1.2rem",
-                sm: "1.5rem",
-                md: "1.65rem",
-              },
-              color: "#fff",
-              lineHeight: "1.5",
-              textAlign: "justify",
-            }}
-          >
-            Get insights into your health. Upload a picture and our AI
-            technology will predict potential disease classifications.
-          </Typography>
-          <label
-            htmlFor="upload-input"
-            className="label"
-            style={{
-              padding: "0.8rem 1.5rem",
-              fontFamily: "sans-serif",
-              textAlign: "center",
-              textDecoration: "none",
-              backgroundColor: "#fff",
-              color: "#00B9FE",
-              borderRadius: "4px",
-              width: "15%",
-            }}
-          >
-            Upload
-          </label>
-          <Input
-            type="file"
-            id="upload-input"
-            accept="image/*"
-            style={{ display: "none" }}
-            onChange={handleFileUpload}
-          />
-        </Stack>
-
-        <Stack
-          alignContent={"center"}
           sx={{
-            width: { xs: "70%", sm: "50%", md: "30%" },
-            height: { xs: "70%", sm: "50%", md: "30%" },
+            display: {
+              xs: "flex",
+              sm: "flex",
+              md: "none",
+            },
           }}
         >
-          {imageSrc ? (
-            <Stack>
-              <img
-                style={{ alignItems: "center", borderRadius: "0.8rem" }}
-                className="dynamicimage"
-                src={imageSrc}
-                alt="your sample"
-              />
-              <Typography
-                sx={{
-                  fontSize: {
-                    xs: "1rem",
-                    sm: "1.1rem",
-                    md: "1.2rem",
-                  },
-                  color: "#fff",
-                  lineHeight: "1.5",
-                  textAlign: "center",
-                }}
-              >
-                Your sample image!!!
-              </Typography>
-            </Stack>
-          ) : (
-            <Stack sx={{  }}>
-              <img
-                style={{ alignItems: "center", borderRadius: "0.8rem" }}
-                className="dynamicimage"
-                src={image1}
-                alt="your sample"
-              />
-              <Typography
-                sx={{
-                  fontSize: {
-                    xs: "1.1rem",
-                    sm: "1.2rem",
-                    md: "1.3rem",
-                  },
-                  color: "#fff",
-                  lineHeight: "1.5",
-                  textAlign: "center",
-                }}
-              >
-                Your sample image will be here!!!
-              </Typography>
-            </Stack>
-          )}
+          <Hamburger />
+        </Stack>
+        <Stack
+          sx={{
+            display: {
+              xs: "none",
+              sm: "none",
+              md: "flex",
+            },
+          }}
+        >
+          <Header />
         </Stack>
       </Stack>
+
+      <Container>
+        <Stack
+          direction={{ sm: "column", md: "row" }}
+          spacing={{ xs: "4rem", sm: "4rem", md: "2rem", lg: "2rem" }}
+        >
+          <Stack
+            spacing={{ xs: "1rem", sm: "1.5rem", md: "2rem", lg: "2.5rem" }}
+            direction={{ xs: "column", sm: "row", md: "column" }}
+            sx={{
+              width: { xs: "100%" },
+            }}
+          >
+            <Stack width={{xs: '100%', sm: '50%', md: '100%'}}>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontSize: {
+                    xs: "0.9rem",
+                    sm: "1rem",
+                    md: "1.25rem",
+                    lg: "1.45rem",
+                  },
+                  paddingTop: {
+                    xs: "0rem",
+                    sm: "2rem",
+                    md: "4rem",
+                    lg: "5rem",
+                  },
+                  color: "#00C6CF",
+                  lineHeight: "1.5",
+                  textAlign: "justify",
+                }}
+              >
+                Get insights into your health. Upload a picture and our AI
+                technology will predict potential disease classifications.
+              </Typography>
+            </Stack>
+
+            <Stack alignItems={"center"} width={{xs: '100%', sm: '50%', md: '100%'}} sx={{ 
+                  paddingTop: {
+                    xs: "0rem",
+                    sm: "3rem",
+                    md: "0rem",
+                    lg: "0rem",
+                  },}}>
+              <label
+                htmlFor="upload-input"
+                className="label"
+                style={{
+                  padding: "0.8rem 1.5rem",
+                  fontFamily: "sans-serif",
+                  textAlign: "center",
+                  textDecoration: "none",
+                  backgroundImage:
+                    "linear-gradient(to right, #00C6CF, #7FD1AE)",
+                  color: "#E8EAED",
+                  borderRadius: "4px",
+                  width: "15%",
+                }}
+              >
+                Upload
+              </label>
+              <Input
+                type="file"
+                id="upload-input"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleFileUpload}
+              />
+            </Stack>
+          </Stack>
+
+          <Stack
+            width={"100%"}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Stack
+              alignContent={"center"}
+              sx={{
+                width: { xs: "20rem", sm: "25rem" },
+              }}
+            >
+              {imageSrc ? (
+                <Stack>
+                  <img
+                    style={{ alignItems: "center", borderRadius: "0.8rem" }}
+                    className="dynamicimage"
+                    src={imageSrc}
+                    alt="your sample"
+                  />
+                  <Typography
+                    sx={{
+                      fontSize: {
+                        xs: "1rem",
+                        sm: "1.1rem",
+                        md: "1.2rem",
+                      },
+                      color: "#00C6CF",
+                      lineHeight: "1.5",
+                      textAlign: "center",
+                    }}
+                  >
+                    Your sample image!!!
+                  </Typography>
+                </Stack>
+              ) : (
+                <Stack sx={{}}>
+                  <img
+                    style={{ alignItems: "center", borderRadius: "0.8rem" }}
+                    className="dynamicimage"
+                    src={image1}
+                    alt="your sample"
+                  />
+                  <Typography
+                    sx={{
+                      fontSize: {
+                        xs: "1.1rem",
+                        sm: "1.2rem",
+                        md: "1.3rem",
+                      },
+                      color: "#00C6CF",
+                      lineHeight: "1.5",
+                      textAlign: "center",
+                    }}
+                  >
+                    Your sample image will be here!!!
+                  </Typography>
+                </Stack>
+              )}
+            </Stack>
+          </Stack>
+        </Stack>
+      </Container>
 
       <Stack
         sx={{

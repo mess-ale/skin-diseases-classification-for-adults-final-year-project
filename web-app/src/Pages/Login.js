@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Footer } from "../components/Footer";
-import { Button, Input, Stack, Typography } from "@mui/material";
+import { Button, Container, Input, Stack, Typography } from "@mui/material";
 import HomeHeader from "../components/HomeHeader";
 import LoginIcon from "@mui/icons-material/Login";
 import logsignimg from "../assets/better.jpg";
@@ -11,7 +11,6 @@ function Login() {
   const [password, setPassword] = useState("");
   const [nameError, setNameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const handleSubmit = (e) => {
     if (name === "") {
@@ -30,18 +29,6 @@ function Login() {
     setPassword("");
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <Stack
       sx={{
@@ -51,138 +38,219 @@ function Login() {
       }}
     >
       <Stack
-        sx={
-          screenWidth > 700
-            ? { marginBottom: "8rem" }
-            : { marginBottom: "0rem" }
-        }
-      >
-        {screenWidth > 700 ? <HomeHeader /> : <HamburgerHome />}
-      </Stack>
-      <Stack
         sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          marginBottom: { sm: "0rem", md: "7rem" },
         }}
       >
         <Stack
           sx={{
-            backgroundImage: `url(${logsignimg})`,
-            width: { xs: "70%", sm: "58%", md: "40%", lg: "30%" },
-            display: "flex",
-            borderRadius: "1rem",
-            justifyContent: "center",
+            display: {
+              xs: 'flex',
+              sm: "flex",
+              md: "none",
+            },
           }}
         >
-          <form onSubmit={handleSubmit}>
-            <Typography
-              sx={{
-                color: "#fff",
-                textAlign: "center",
-                padding: {
-                  xs: "1.2rem",
-                  sm: "1.5rem",
-                  md: "1.75rem",
-                  lg: "2rem",
-                },
-                fontSize: {
-                  xs: "1.2rem",
-                  sm: "1.5rem",
-                  md: "1.75rem",
-                  lg: "2rem",
-                },
-                textTransform: "uppercase",
-                fontWeight: "bold",
-              }}
-            >
-              Log In
-            </Typography>
-            <Stack
-              spacing={{
-                xs: "1.7rem",
-                sm: "2.5rem",
-                md: "2.75rem",
-                lg: "3rem",
-              }}
-              sx={{ alignItems: "center" }}
-            >
-              <Input
-                type="text"
-                placeholder="Your Name"
-                value={name}
-                required
-                error={nameError}
+          <HamburgerHome />
+        </Stack>
+        <Stack
+          sx={{
+            display: {
+              xs: 'none',
+              sm: "none",
+              md: "flex",
+            },
+          }}
+        >
+          <HomeHeader />
+        </Stack>
+      </Stack>
+
+      <Container>
+        <Stack
+          direction={{ sm: "column", md: "row" }}
+          spacing={{ xs: "4rem", sm: "4rem", md: "1rem", lg: "2rem" }}
+        >
+          <Stack
+            sx={{
+              width: { xs: "100%" },
+            }}
+          >
+            <Stack>
+              <Typography
                 sx={{
-                  fontSize: {
-                    xs: "0.75rem",
-                    sm: "0.8rem",
-                    md: "1rem",
-                    lg: "1.1rem",
+                  padding: {
+                    xs: "0rem 0rem 1.5rem 0rem",
+                    sm: "1rem 0rem 1.5rem 0rem",
+                    md: "5rem 0rem 1.75rem 0rem",
+                    lg: "6rem 0rem 1.5rem 0rem",
                   },
-                }}
-                style={{
-                  color: "#000",
-                  borderRadius: "0.25rem",
-                  paddingLeft: "1rem",
-                  backgroundColor: "#fff",
-                  width: "65%",
-                }}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <Input
-                type="password"
-                required
-                placeholder="Your Password"
-                error={passwordError}
-                value={password}
-                sx={{
+                  color: "#7FD1AE",
+                  fontWeight: "bold",
+                  textAlign: {xs: 'center', md: 'left'},
                   fontSize: {
-                    xs: "0.75rem",
-                    sm: "0.8rem",
-                    md: "1rem",
-                    lg: "1.1rem",
+                    xs: "2rem",
+                    sm: "2.25rem",
+                    md: "2.7rem",
+                    lg: "3rem",
                   },
-                }}
-                style={{
-                  color: "#000",
-                  borderRadius: "0.25rem",
-                  backgroundColor: "#fff",
-                  paddingLeft: '1rem',
-                  width: "65%",
-                }}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <Stack
-                sx={{
-                  paddingBottom: { xs: "4rem", sm: "4.5rem", md: "5rem" },
-                  paddingTop: { xs: "1.5rem", sm: "1.75rem", md: "2rem" },
+                  textTransform: "uppercase",
                 }}
               >
-                <Button
-                  type="submit"
-                  endIcon={<LoginIcon />}
+                DermAI
+              </Typography>
+
+              <Typography
+                sx={{
+                  textAlign: "justify",
+                  fontSize: {
+                    xs: "1.1rem",
+                    sm: "1.15rem",
+                    md: "1.3rem",
+                    lg: "1.55rem",
+                  },
+                }}
+              >
+                <span
+                  style={{
+                    color: "#00C6CF",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Welcome back!
+                </span>{" "}
+                Please sign in to access your DermAI account and unlock the
+                power of advanced skin analysis.
+              </Typography>
+            </Stack>
+          </Stack>
+
+          <Stack
+            width={"100%"}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Stack
+              sx={{
+                backgroundImage: `url(${logsignimg})`,
+                borderRadius: "1rem",
+                width: { xs: "20rem", sm: "25rem",},
+              }}
+            >
+              <form onSubmit={handleSubmit}>
+                <Typography
                   sx={{
-                    backgroundColor: "#00B9FE",
-                    borderRadius: "5px",
-                    color: "#333",
+                    color: "#00C6CF",
+                    textAlign: "center",
                     padding: {
-                      xs: "0.2rem 1.5rem",
-                      sm: "0.2rem 1.75rem",
-                      md: "0.3rem 2rem",
+                      xs: "1.2rem",
+                      sm: "1.5rem",
+                      md: "1.75rem",
+                      lg: "2rem",
                     },
-                    "&:hover": {
-                      backgroundColor: "#e0e0e0",
+                    fontSize: {
+                      xs: "1.2rem",
+                      sm: "1.5rem",
+                      md: "1.75rem",
+                      lg: "2rem",
                     },
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
                   }}
                 >
                   Log In
-                </Button>
-              </Stack>
+                </Typography>
+                <Stack
+                  spacing={{
+                    xs: "1.7rem",
+                    sm: "2.5rem",
+                    md: "2.75rem",
+                    lg: "3rem",
+                  }}
+                  sx={{ alignItems: "center" }}
+                >
+                  <Input
+                    type="text"
+                    placeholder="Your Name"
+                    value={name}
+                    required
+                    error={nameError}
+                    sx={{
+                      fontSize: {
+                        xs: "0.75rem",
+                        sm: "0.8rem",
+                        md: "1rem",
+                        lg: "1.1rem",
+                      },
+                    }}
+                    style={{
+                      color: "#000",
+                      borderRadius: "0.25rem",
+                      paddingLeft: "1rem",
+                      backgroundColor: "#fff",
+                      width: "65%",
+                    }}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <Input
+                    type="password"
+                    required
+                    placeholder="Your Password"
+                    error={passwordError}
+                    value={password}
+                    sx={{
+                      fontSize: {
+                        xs: "0.75rem",
+                        sm: "0.8rem",
+                        md: "1rem",
+                        lg: "1.1rem",
+                      },
+                    }}
+                    style={{
+                      color: "#000",
+                      borderRadius: "0.25rem",
+                      backgroundColor: "#fff",
+                      paddingLeft: "1rem",
+                      width: "65%",
+                    }}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <Stack
+                    sx={{
+                      paddingBottom: { xs: "4rem", sm: "4.5rem", md: "5rem" },
+                      paddingTop: { xs: "1.5rem", sm: "1.75rem", md: "2rem" },
+                    }}
+                  >
+                    <Button
+                      type="submit"
+                      endIcon={<LoginIcon />}
+                      sx={{
+                        backgroundImage:
+                          "linear-gradient(to right, #00C6CF, #7FD1AE)",
+                        borderRadius: "5px",
+                        color: "#333",
+                        padding: {
+                          xs: "0.2rem 1.5rem",
+                          sm: "0.2rem 1.75rem",
+                          md: "0.3rem 2rem",
+                        },
+                        "&:hover": {
+                          backgroundColor: "#e0e0e0",
+                        },
+                      }}
+                    >
+                      Log In
+                    </Button>
+                  </Stack>
+                </Stack>
+              </form>
             </Stack>
-          </form>
+          </Stack>
         </Stack>
-      </Stack>
+      </Container>
 
       <Stack
         sx={{
