@@ -23,6 +23,7 @@ function HomeHeader() {
         lg: "0.5rem",
       },
     },
+    fontFamily: 'Young Serif'
   };
 
   return (
@@ -36,7 +37,7 @@ function HomeHeader() {
         left: "0",
         width: "100%",
         zIndex: "310",
-        padding: { xs: "1.25rem 0rem", sm: "1.5rem 0rem", md: "1.75rem 0rem" },
+        padding: { xs: "1rem 0rem", sm: "1.25rem 0rem", md: "1.5rem 0rem" },
       }}
     >
       <Stack sx={{ paddingLeft: { sm: "2rem", md: "3.3rem", lg: "4rem" } }}>

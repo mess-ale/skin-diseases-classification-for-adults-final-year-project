@@ -52,11 +52,12 @@ function SignUp() {
 
   const sxinput = {
     fontSize: {
-      xs: "0.75rem",
+      xs: "0.7rem",
       sm: "0.8rem",
-      md: "1rem",
-      lg: "1.1rem",
+      md: "0.9rem",
+      lg: "1rem",
     },
+    fontFamily: 'Outfit'
   };
 
   const styleinput = {
@@ -133,6 +134,7 @@ function SignUp() {
                     lg: "3rem",
                   },
                   textTransform: "uppercase",
+                  fontFamily: 'Young Serif'
                 }}
               >
                 DermAI
@@ -147,6 +149,7 @@ function SignUp() {
                     md: "1.3rem",
                     lg: "1.55rem",
                   },
+                fontFamily: 'Outfit'
                 }}
               >
                 <span
@@ -196,6 +199,7 @@ function SignUp() {
                     color: "#00C6CF",
                     fontWeight: "bold",
                     textTransform: "uppercase",
+                    fontFamily: 'Young Serif'
                   }}
                 >
                   Create Account
@@ -268,6 +272,7 @@ function SignUp() {
                         "&:hover": {
                           backgroundColor: "#e0e0e0",
                         },
+                        fontFamily: 'Young Serif'
                       }}
                     >
                       Sign Up

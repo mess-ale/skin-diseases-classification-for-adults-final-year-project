@@ -25,6 +25,7 @@ function Header() {
         lg: "0.5rem",
       },
     },
+    fontFamily: "Young Serif",
   };
 
   return (
@@ -33,7 +34,7 @@ function Header() {
       sx={{
         justifyContent: "space-between",
         backgroundImage: "linear-gradient(to right, #00C6CF, #7FD1AE)",
-        padding: { xs: "1.25rem 0rem", sm: "1.5rem 0rem", md: "1.75rem 0rem" },
+        padding: { xs: "1rem 0rem", sm: "1.25rem 0rem", md: "1.5rem 0rem" },
         position: "fixed",
         top: "0",
         left: "0",

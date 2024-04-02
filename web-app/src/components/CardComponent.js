@@ -15,6 +15,7 @@ function CardComponent({ imge, title, desc, link }) {
     fontSize: { xs: "1.2rem", sm: "1.3rem", md: "1.45rem", lg: "1.5rem" },
     paddingTop: { xs: "0.4rem", sm: "0.6", md: "0.8rem" },
     fontWeight: "bold",
+    fontFamily: 'Young Serif'
   };
 
   const linkStyle2 = {
@@ -24,6 +25,7 @@ function CardComponent({ imge, title, desc, link }) {
       sm: "1rem 0rem 1.5rem 0rem",
       md: "1.2rem 0rem 1.7rem 0rem",
     },
+    fontFamily: 'Outfit'
   };
 
   const linkStyle3 = {

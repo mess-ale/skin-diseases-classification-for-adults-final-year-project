@@ -16,7 +16,6 @@ import HamburgerHome from "../components/HamburgerHome";
 import CardComponent from "../components/CardComponent";
 
 export const Home = () => {
-
   const styles = {
     backgroundImage: `url(${homeimage1})`,
     backgroundSize: "cover",
@@ -34,9 +33,8 @@ export const Home = () => {
         flexDirection: "column",
       }}
     >
-      <Stack sx={{ marginBottom: { sm: "0rem", md: "7rem" }, }}>
-        
-      <Stack
+      <Stack sx={{ marginBottom: { sm: "0rem", md: "7rem" } }}>
+        <Stack
           sx={{
             display: {
               xs: "flex",
@@ -61,13 +59,14 @@ export const Home = () => {
       </Stack>
 
       <Container sx={styles}>
-        <Stack padding={{ xs: "1.5rem", sm: "2.5rem", md: "4rem", lg: "5rem", }}>
+        <Stack padding={{ xs: "1.5rem", sm: "2.5rem", md: "4rem", lg: "5rem" }}>
           <Typography
             sx={{
               color: "#E8EAED",
               fontWeight: "bold",
               textAlign: "center",
               fontSize: { xs: "2rem", sm: "2.5rem", md: "4rem" },
+              fontFamily: "Young Serif",
             }}
           >
             skin diseases classification for adults
@@ -86,6 +85,7 @@ export const Home = () => {
                 textAlign: "justify",
                 padding: { xs: "1.5rem", sm: "1.75rem", md: "2rem" },
                 fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
+                fontFamily: "Outfit",
               }}
             >
               Our cutting-edge machine learning system provides accurate
@@ -119,12 +119,15 @@ export const Home = () => {
                 color: "#fff",
                 borderRadius: "4px",
                 "&:hover": {
-                  backgroundImage: "linear-gradient(to right, #00C6CF, #7FD1AE)",
-
+                  backgroundImage:
+                    "linear-gradient(to right, #00C6CF, #7FD1AE)",
                 },
               }}
             >
-              <Link style={{ textDecoration: "none" }} to="/join">
+              <Link
+                style={{ textDecoration: "none", fontFamily: "Young Serif" }}
+                to="/join"
+              >
                 Get Started
               </Link>
             </Button>

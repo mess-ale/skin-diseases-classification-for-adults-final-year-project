@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import { Footer } from "../components/Footer";
 import image1 from "../assets/Gemini_Generated_Image (1).jpg";
 import Hamburger from "../components/Hamburger";
-import { Container, Input, Stack, Typography } from "@mui/material";
+import { Button, Container, Input, Stack, Typography } from "@mui/material";
 
 function Upload() {
   const [imageSrc, setImageSrc] = useState("");
@@ -28,7 +28,7 @@ function Upload() {
     >
       <Stack
         sx={{
-          marginBottom: { sm: "0rem", md: "7rem" },
+          marginBottom: { sm: "0rem", md: "10rem" },
         }}
       >
         <Stack
@@ -67,7 +67,7 @@ function Upload() {
               width: { xs: "100%" },
             }}
           >
-            <Stack width={{xs: '100%', sm: '50%', md: '100%'}}>
+            <Stack width={{ xs: "100%", sm: "50%", md: "100%" }}>
               <Typography
                 variant="h6"
                 sx={{
@@ -86,6 +86,7 @@ function Upload() {
                   color: "#00C6CF",
                   lineHeight: "1.5",
                   textAlign: "justify",
+                  fontFamily: "Outfit",
                 }}
               >
                 Get insights into your health. Upload a picture and our AI
@@ -93,30 +94,37 @@ function Upload() {
               </Typography>
             </Stack>
 
-            <Stack alignItems={"center"} width={{xs: '100%', sm: '50%', md: '100%'}} sx={{ 
-                  paddingTop: {
-                    xs: "0rem",
-                    sm: "3rem",
-                    md: "0rem",
-                    lg: "0rem",
-                  },}}>
-              <label
-                htmlFor="upload-input"
+            <Stack
+              alignItems={"center"}
+              width={{ xs: "100%", sm: "50%", md: "100%" }}
+              sx={{
+                paddingTop: {
+                  xs: "0rem",
+                  sm: "3rem",
+                  md: "0rem",
+                  lg: "0rem",
+                },
+              }}
+            >
+              <Button
                 className="label"
                 style={{
                   padding: "0.8rem 1.5rem",
-                  fontFamily: "sans-serif",
+                  fontFamily: "Young Serif",
                   textAlign: "center",
                   textDecoration: "none",
                   backgroundImage:
                     "linear-gradient(to right, #00C6CF, #7FD1AE)",
                   color: "#E8EAED",
                   borderRadius: "4px",
-                  width: "15%",
+                  width: "25%",
+                }}
+                onClick={() => {
+                  document.getElementById("upload-input").click();
                 }}
               >
                 Upload
-              </label>
+              </Button>
               <Input
                 type="file"
                 id="upload-input"
@@ -142,7 +150,7 @@ function Upload() {
               }}
             >
               {imageSrc ? (
-                <Stack>
+                <Stack spacing={"1rem"}>
                   <img
                     style={{ alignItems: "center", borderRadius: "0.8rem" }}
                     className="dynamicimage"
@@ -157,7 +165,6 @@ function Upload() {
                         md: "1.2rem",
                       },
                       color: "#00C6CF",
-                      lineHeight: "1.5",
                       textAlign: "center",
                     }}
                   >
@@ -165,7 +172,7 @@ function Upload() {
                   </Typography>
                 </Stack>
               ) : (
-                <Stack sx={{}}>
+                <Stack spacing={"1rem"}>
                   <img
                     style={{ alignItems: "center", borderRadius: "0.8rem" }}
                     className="dynamicimage"
@@ -180,7 +187,6 @@ function Upload() {
                         md: "1.3rem",
                       },
                       color: "#00C6CF",
-                      lineHeight: "1.5",
                       textAlign: "center",
                     }}
                   >
