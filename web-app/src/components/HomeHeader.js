@@ -1,8 +1,10 @@
 import { Box, Divider, Stack } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function HomeHeader() {
+  const loacation = useLocation();
+
   const linkStyle = {
     color: "#E0E0E0",
     textDecoration: "none",
@@ -11,8 +13,7 @@ function HomeHeader() {
     marginRight: "1rem",
   };
 
-  const linkStyle2 =
-  {
+  const linkStyle2 = {
     padding: "0.2rem 1rem 0.2rem 1rem",
     "&:hover": {
       backgroundColor: "#E0E0E0",
@@ -23,7 +24,7 @@ function HomeHeader() {
         lg: "0.5rem",
       },
     },
-    fontFamily: 'Young Serif'
+    fontFamily: "Young Serif",
   };
 
   return (
@@ -43,6 +44,15 @@ function HomeHeader() {
       <Stack sx={{ paddingLeft: { sm: "2rem", md: "3.3rem", lg: "4rem" } }}>
         <Link style={linkStyle} to="/">
           <Box
+            style={
+              loacation.pathname === "/"
+                ? {
+                    backgroundColor: "#E0E0E0",
+                    color: "#000",
+                    borderRadius: '0.5rem'
+                  }
+                : {}
+            }
             sx={linkStyle2}
           >
             Home
@@ -57,11 +67,16 @@ function HomeHeader() {
       >
         <Stack>
           <Link style={linkStyle} to="/login">
-            <Box
-              sx={linkStyle2}
-            >
-              Log In
-            </Box>
+            <Box sx={linkStyle2} 
+            style={
+              loacation.pathname === "/login"
+                ? {
+                    backgroundColor: "#E0E0E0",
+                    color: "#000",
+                    borderRadius: '0.5rem'
+                  }
+                : {}
+            }>Log In</Box>
           </Link>
         </Stack>
         <Divider
@@ -73,11 +88,16 @@ function HomeHeader() {
         />
         <Stack>
           <Link style={linkStyle} to="/join">
-            <Box
-              sx={linkStyle2}
-            >
-              Join
-            </Box>
+            <Box sx={linkStyle2} 
+            style={
+              loacation.pathname === "/join"
+                ? {
+                    backgroundColor: "#E0E0E0",
+                    color: "#000",
+                    borderRadius: '0.5rem'
+                  }
+                : {}
+            }>Join</Box>
           </Link>
         </Stack>
       </Stack>

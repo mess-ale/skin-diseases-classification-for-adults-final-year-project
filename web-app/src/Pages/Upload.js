@@ -3,7 +3,8 @@ import Header from "../components/Header";
 import { Footer } from "../components/Footer";
 import image1 from "../assets/Gemini_Generated_Image (1).jpg";
 import Hamburger from "../components/Hamburger";
-import { Button, Container, Input, Stack, Typography } from "@mui/material";
+import { Button, Container, Input, Stack, SvgIcon, Typography } from "@mui/material";
+import { FileUpload } from "@mui/icons-material";
 
 function Upload() {
   const [imageSrc, setImageSrc] = useState("");
@@ -28,7 +29,7 @@ function Upload() {
     >
       <Stack
         sx={{
-          marginBottom: { sm: "0rem", md: "10rem" },
+          marginBottom: { sm: "0rem", md: "9rem" },
         }}
       >
         <Stack
@@ -62,26 +63,24 @@ function Upload() {
         >
           <Stack
             spacing={{ xs: "1rem", sm: "1.5rem", md: "2rem", lg: "2.5rem" }}
-            direction={{ xs: "column", sm: "row", md: "column" }}
             sx={{
               width: { xs: "100%" },
             }}
           >
-            <Stack width={{ xs: "100%", sm: "50%", md: "100%" }}>
+            <Stack>
               <Typography
-                variant="h6"
                 sx={{
                   fontSize: {
-                    xs: "0.9rem",
-                    sm: "1rem",
+                    xs: "1.1rem",
+                    sm: "1.25rem",
                     md: "1.25rem",
                     lg: "1.45rem",
                   },
-                  paddingTop: {
-                    xs: "0rem",
-                    sm: "2rem",
-                    md: "4rem",
-                    lg: "5rem",
+                  padding: {
+                    xs: "1rem 2rem 1rem 2rem",
+                    sm: "2rem 3rem 0rem 3rem",
+                    md: "4.5rem 0rem 2rem 2.5rem",
+                    lg: "5rem 0rem 0rem 0rem",
                   },
                   color: "#00C6CF",
                   lineHeight: "1.5",
@@ -96,7 +95,6 @@ function Upload() {
 
             <Stack
               alignItems={"center"}
-              width={{ xs: "100%", sm: "50%", md: "100%" }}
               sx={{
                 paddingTop: {
                   xs: "0rem",
@@ -108,6 +106,7 @@ function Upload() {
             >
               <Button
                 className="label"
+                startIcon={<SvgIcon component={FileUpload} />}
                 style={{
                   padding: "0.8rem 1.5rem",
                   fontFamily: "Young Serif",

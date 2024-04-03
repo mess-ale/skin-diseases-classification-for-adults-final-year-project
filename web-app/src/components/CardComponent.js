@@ -38,6 +38,7 @@ function CardComponent({ imge, title, desc, link }) {
       backgroundColor: "#e0e0e0",
       color: "#000",
     },
+    fontFamily: 'Young Serif'
   };
 
   return (

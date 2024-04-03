@@ -1,8 +1,10 @@
 import { Box, Divider, Stack } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Header() {
+  const loacation = useLocation();
+
   const linkStyle = {
     fontSize: { sm: "0.9rem", md: "0.95rem", lg: "1rem" },
   };
@@ -47,7 +49,20 @@ function Header() {
         sx={linkStyle}
       >
         <Link style={linkStyle2} to="/">
-          <Box sx={linkStyle3}>Home</Box>
+          <Box
+            style={
+              loacation.pathname === "/"
+                ? {
+                    backgroundColor: "#E0E0E0",
+                    color: "#000",
+                    borderRadius: "0.5rem",
+                  }
+                : {}
+            }
+            sx={linkStyle3}
+          >
+            Home
+          </Box>
         </Link>
       </Stack>
 
@@ -58,7 +73,20 @@ function Header() {
       >
         <Stack sx={linkStyle}>
           <Link style={linkStyle2} to="/home/upload">
-            <Box sx={linkStyle3}>Upload</Box>
+            <Box
+              style={
+                loacation.pathname === "/home/upload"
+                  ? {
+                      backgroundColor: "#E0E0E0",
+                      color: "#000",
+                      borderRadius: "0.5rem",
+                    }
+                  : {}
+              }
+              sx={linkStyle3}
+            >
+              Upload
+            </Box>
           </Link>
         </Stack>
         <Divider
@@ -70,7 +98,20 @@ function Header() {
         />
         <Stack sx={linkStyle}>
           <Link style={linkStyle2} to="/home/preview">
-            <Box sx={linkStyle3}>Preview</Box>
+            <Box
+              style={
+                loacation.pathname === "/home/preview"
+                  ? {
+                      backgroundColor: "#E0E0E0",
+                      color: "#000",
+                      borderRadius: "0.5rem",
+                    }
+                  : {}
+              }
+              sx={linkStyle3}
+            >
+              Preview
+            </Box>
           </Link>
         </Stack>
         <Divider
@@ -82,7 +123,20 @@ function Header() {
         />
         <Stack sx={linkStyle}>
           <Link style={linkStyle2} to="/home/prediction">
-            <Box sx={linkStyle3}>Prediction</Box>
+            <Box
+              style={
+                loacation.pathname === "/home/prediction"
+                  ? {
+                      backgroundColor: "#E0E0E0",
+                      color: "#000",
+                      borderRadius: "0.5rem",
+                    }
+                  : {}
+              }
+              sx={linkStyle3}
+            >
+              Prediction
+            </Box>
           </Link>
         </Stack>
       </Stack>
