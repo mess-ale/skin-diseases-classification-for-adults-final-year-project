@@ -2,6 +2,7 @@ import { Box, Divider, Stack } from "@mui/material";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
+
 function HomeHeader() {
   const loacation = useLocation();
 
@@ -41,25 +42,26 @@ function HomeHeader() {
         padding: { xs: "1rem 0rem", sm: "1.25rem 0rem", md: "1.5rem 0rem" },
       }}
     >
-      <Stack sx={{ paddingLeft: { sm: "2rem", md: "3.3rem", lg: "4rem" } }}>
-        <Link style={linkStyle} to="/">
-          <Box
-            style={
-              loacation.pathname === "/"
-                ? {
-                    backgroundColor: "#E0E0E0",
-                    color: "#000",
-                    borderRadius: '0.5rem'
-                  }
-                : {}
-            }
-            sx={linkStyle2}
-          >
-            Home
-          </Box>
-        </Link>
+      <Stack>
+        <Stack sx={{ paddingLeft: { sm: "2rem", md: "3.3rem", lg: "4rem" } }}>
+          <Link style={linkStyle} to="/">
+            <Box
+              style={
+                loacation.pathname === "/"
+                  ? {
+                      backgroundColor: "#E0E0E0",
+                      color: "#000",
+                      borderRadius: "0.5rem",
+                    }
+                  : {}
+              }
+              sx={linkStyle2}
+            >
+              Home
+            </Box>
+          </Link>
+        </Stack>
       </Stack>
-
       <Stack
         direction={"row"}
         spacing={{ sm: "2rem", md: "2.5rem", lg: "3rem" }}
@@ -67,16 +69,20 @@ function HomeHeader() {
       >
         <Stack>
           <Link style={linkStyle} to="/login">
-            <Box sx={linkStyle2} 
-            style={
-              loacation.pathname === "/login"
-                ? {
-                    backgroundColor: "#E0E0E0",
-                    color: "#000",
-                    borderRadius: '0.5rem'
-                  }
-                : {}
-            }>Log In</Box>
+            <Box
+              sx={linkStyle2}
+              style={
+                loacation.pathname === "/login"
+                  ? {
+                      backgroundColor: "#E0E0E0",
+                      color: "#000",
+                      borderRadius: "0.5rem",
+                    }
+                  : {}
+              }
+            >
+              Log In
+            </Box>
           </Link>
         </Stack>
         <Divider
@@ -88,16 +94,20 @@ function HomeHeader() {
         />
         <Stack>
           <Link style={linkStyle} to="/join">
-            <Box sx={linkStyle2} 
-            style={
-              loacation.pathname === "/join"
-                ? {
-                    backgroundColor: "#E0E0E0",
-                    color: "#000",
-                    borderRadius: '0.5rem'
-                  }
-                : {}
-            }>Join</Box>
+            <Box
+              sx={linkStyle2}
+              style={
+                loacation.pathname === "/join"
+                  ? {
+                      backgroundColor: "#E0E0E0",
+                      color: "#000",
+                      borderRadius: "0.5rem",
+                    }
+                  : {}
+              }
+            >
+              Join
+            </Box>
           </Link>
         </Stack>
       </Stack>

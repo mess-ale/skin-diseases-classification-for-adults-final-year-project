@@ -1,12 +1,14 @@
-import { Box, Divider, Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import DrawerUsers from "./DrawerUsers";
 
 function Header() {
   const loacation = useLocation();
 
   const linkStyle = {
     fontSize: { sm: "0.9rem", md: "0.95rem", lg: "1rem" },
+    paddingTop: '0.7rem',
   };
 
   const linkStyle2 = {
@@ -36,7 +38,7 @@ function Header() {
       sx={{
         justifyContent: "space-between",
         backgroundImage: "linear-gradient(to right, #00C6CF, #7FD1AE)",
-        padding: { xs: "1rem 0rem", sm: "1.25rem 0rem", md: "1.5rem 0rem" },
+        padding: { xs: "1rem 0rem", sm: "1.25rem 0rem", md: "0.8rem 0rem" },
         position: "fixed",
         top: "0",
         left: "0",
@@ -45,25 +47,31 @@ function Header() {
       }}
     >
       <Stack
-        paddingLeft={{ sm: "2rem", md: "3.5rem", lg: "5rem" }}
-        sx={linkStyle}
+        direction={"row"}
+        spacing={'2rem'}
+        paddingLeft={{ sm: "1rem", md: "2.5rem", lg: "3rem" }}
       >
-        <Link style={linkStyle2} to="/">
-          <Box
-            style={
-              loacation.pathname === "/"
-                ? {
-                    backgroundColor: "#E0E0E0",
-                    color: "#000",
-                    borderRadius: "0.5rem",
-                  }
-                : {}
-            }
-            sx={linkStyle3}
-          >
-            Home
-          </Box>
-        </Link>
+        <Stack>
+          <DrawerUsers />
+        </Stack>
+        <Stack sx={linkStyle}>
+          <Link style={linkStyle2} to="/">
+            <Box
+              style={
+                loacation.pathname === "/"
+                  ? {
+                      backgroundColor: "#E0E0E0",
+                      color: "#000",
+                      borderRadius: "0.5rem",
+                    }
+                  : {}
+              }
+              sx={linkStyle3}
+            >
+              Home
+            </Box>
+          </Link>
+        </Stack>
       </Stack>
 
       <Stack
@@ -89,13 +97,6 @@ function Header() {
             </Box>
           </Link>
         </Stack>
-        <Divider
-          orientation="vertical"
-          sx={{
-            borderRight: "1px solid #ccc", // Adjust border styles for vertical divider
-            height: "100%", // Set height to match container if needed
-          }}
-        />
         <Stack sx={linkStyle}>
           <Link style={linkStyle2} to="/home/preview">
             <Box
@@ -114,13 +115,6 @@ function Header() {
             </Box>
           </Link>
         </Stack>
-        <Divider
-          orientation="vertical"
-          sx={{
-            borderRight: "1px solid #ccc", // Adjust border styles for vertical divider
-            height: "100%", // Set height to match container if needed
-          }}
-        />
         <Stack sx={linkStyle}>
           <Link style={linkStyle2} to="/home/prediction">
             <Box
