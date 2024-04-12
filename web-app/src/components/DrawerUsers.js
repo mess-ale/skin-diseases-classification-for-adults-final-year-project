@@ -1,4 +1,4 @@
-import { Logout } from "@mui/icons-material";
+import { Edit, Logout } from "@mui/icons-material";
 import {
   Avatar,
   Button,
@@ -17,36 +17,50 @@ function DrawerUsers() {
 
   return (
     <Stack>
-      <IconButton onClick={() => setOpen(true)}>
+      <IconButton onClick={() => setOpen(true)} sx={{ color: "#3f51b5" }}>
         <Avatar />
       </IconButton>
       <Drawer open={open} onClose={() => setOpen(false)}>
         <List sx={{ padding: "4rem 3rem 0rem 2rem" }}>
-          <Stack direction="row" spacing="1rem" paddingBottom="3rem">
-            <Avatar />
-            <Typography paddingTop="0.7rem">Meseret Alemnew</Typography>
+          <Stack direction="row" spacing="1rem" paddingBottom="1.5rem">
+            <Avatar sx={{ backgroundColor: "#3f51b5" }} />
+            <Typography paddingTop="0.7rem" sx={{ fontWeight: "bold" }}>
+              Meseret Alemnew
+            </Typography>
+          </Stack>
+          <Stack paddingBottom={'2.5rem'}>
+            <Divider />
           </Stack>
           <Stack spacing="2rem">
-            <Typography>Name: Meseret Alemenw</Typography>
-            <Typography>Email: alemenwmeseret@gmail.com</Typography>
-            <Typography>
+            <Typography sx={{ color: "#757575" }}>
+              Name: Meseret Alemenw
+            </Typography>
+            <Typography sx={{ color: "#757575" }}>
+              Email: alemenwmeseret@gmail.com
+            </Typography>
+            <Typography sx={{ color: "#757575" }}>
               Night Mode: <Switch />
             </Typography>
           </Stack>
-          <Stack paddingTop="7rem" spacing="2rem">
+          <Stack paddingTop="5rem" spacing="2rem">
             <Divider />
-            <Button
-              style={{
-                justifyContent: "flex-start", // Align icon and text
-                color: "#999", // Adjust button color
-                "&:hover": {
-                  backgroundColor: "#eee", // Add hover effect
-                },
-              }}
-              startIcon={<Logout />}
-            >
-              LogOut
-            </Button>
+            <Stack spacing={"0.5rem"} paddingTop={"1.5rem"}>
+              <Button
+                startIcon={<Edit />}
+                sx={{
+                  color: "#3f51b5",
+                  justifyContent: "flex-start",
+                }}
+              >
+                Edit your profile
+              </Button>
+              <Button
+                startIcon={<Logout />}
+                sx={{ color: "#f44336", justifyContent: "flex-start" }}
+              >
+                LogOut
+              </Button>
+            </Stack>
           </Stack>
         </List>
       </Drawer>
