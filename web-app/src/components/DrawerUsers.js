@@ -21,7 +21,7 @@ function DrawerUsers() {
         <Avatar />
       </IconButton>
       <Drawer open={open} onClose={() => setOpen(false)}>
-        <List sx={{ padding: "4rem 3rem 0rem 2rem" }}>
+        <List sx={{ padding: "4rem 6rem 0rem 2rem" }}>
           <Stack direction="row" spacing="1rem" paddingBottom="1.5rem">
             <Avatar sx={{ backgroundColor: "#3f51b5" }} />
             <Typography paddingTop="0.7rem" sx={{ fontWeight: "bold" }}>
@@ -31,12 +31,21 @@ function DrawerUsers() {
           <Stack paddingBottom={'2.5rem'}>
             <Divider />
           </Stack>
-          <Stack spacing="2rem">
+          <Stack spacing="1rem">
             <Typography sx={{ color: "#757575" }}>
               Name: Meseret Alemenw
             </Typography>
             <Typography sx={{ color: "#757575" }}>
-              Email: alemenwmeseret@gmail.com
+              Date of birth: 22/12/2023
+            </Typography>
+            <Typography sx={{ color: "#757575" }}>
+              Gender: male
+            </Typography>
+            <Typography sx={{ color: "#757575" }}>
+              Addrase: addis ababa
+            </Typography>
+            <Typography sx={{ color: "#757575" }}>
+              phone number: 094839489
             </Typography>
             <Typography sx={{ color: "#757575" }}>
               Night Mode: <Switch />
