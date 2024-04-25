@@ -7,7 +7,6 @@ import {
   IconButton,
   List,
   Stack,
-  Switch,
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
@@ -46,9 +45,6 @@ function DrawerUsers() {
             </Typography>
             <Typography sx={{ color: "#757575" }}>
               phone number: 094839489
-            </Typography>
-            <Typography sx={{ color: "#757575" }}>
-              Night Mode: <Switch />
             </Typography>
           </Stack>
           <Stack paddingTop="5rem" spacing="2rem">

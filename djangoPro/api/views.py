@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import generics
+from .models import User
+from .serializers import LogForm
 
-# Create your views here.
-def main(request):
-    return HttpResponse("hello")
+class UsersViews(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = LogForm
