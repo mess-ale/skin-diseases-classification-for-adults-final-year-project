@@ -1,7 +1,5 @@
-import { Edit, Logout } from "@mui/icons-material";
 import {
   Avatar,
-  Button,
   Divider,
   Drawer,
   IconButton,
@@ -9,10 +7,26 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import LogoutDialog from "./LogoutDialog";
+import api from "../api";
 
 function DrawerUsers() {
   const [open, setOpen] = useState(false);
+  const [userDataName, setUserDataName] = useState('');
+  const [userDataEmail, setUserDataEmail] = useState('');
+
+  useEffect(() => {
+    api.get('http://127.0.0.1:8000/api/user/data/')
+    .then(response => {
+      const userData = response.data;
+      setUserDataName(userData.username);
+      setUserDataEmail(userData.email);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }, []); 
 
   return (
     <Stack>
@@ -24,48 +38,23 @@ function DrawerUsers() {
           <Stack direction="row" spacing="1rem" paddingBottom="1.5rem">
             <Avatar sx={{ backgroundColor: "#3f51b5" }} />
             <Typography paddingTop="0.7rem" sx={{ fontWeight: "bold" }}>
-              Meseret Alemnew
+              {userDataName}
             </Typography>
           </Stack>
-          <Stack paddingBottom={'2.5rem'}>
+          <Stack paddingBottom={"2.5rem"}>
             <Divider />
           </Stack>
           <Stack spacing="1rem">
             <Typography sx={{ color: "#757575" }}>
-              Name: Meseret Alemenw
+              Name: {userDataName}
             </Typography>
             <Typography sx={{ color: "#757575" }}>
-              Date of birth: 22/12/2023
-            </Typography>
-            <Typography sx={{ color: "#757575" }}>
-              Gender: male
-            </Typography>
-            <Typography sx={{ color: "#757575" }}>
-              Addrase: addis ababa
-            </Typography>
-            <Typography sx={{ color: "#757575" }}>
-              phone number: 094839489
+              Email: {userDataEmail}
             </Typography>
           </Stack>
           <Stack paddingTop="5rem" spacing="2rem">
             <Divider />
-            <Stack spacing={"0.5rem"} paddingTop={"1.5rem"}>
-              <Button
-                startIcon={<Edit />}
-                sx={{
-                  color: "#3f51b5",
-                  justifyContent: "flex-start",
-                }}
-              >
-                Edit your profile
-              </Button>
-              <Button
-                startIcon={<Logout />}
-                sx={{ color: "#f44336", justifyContent: "flex-start" }}
-              >
-                LogOut
-              </Button>
-            </Stack>
+            <LogoutDialog />
           </Stack>
         </List>
       </Drawer>

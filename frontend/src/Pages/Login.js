@@ -5,29 +5,36 @@ import HomeHeader from "../components/HomeHeader";
 import LoginIcon from "@mui/icons-material/Login";
 import logsignimg from "../assets/better.jpg";
 import HamburgerHome from "../components/HamburgerHome";
+import { useNavigate } from "react-router-dom";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
+import api from "../api";
 
-function Login() {
+function Login({ route }) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [nameError, setNameError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    if (name === "") {
-      setNameError(true);
-    }
-    if (password === "") {
-      setPasswordError(true);
-    }
-
-    if (!name && !password) {
-      // history.push("/home/upload");
-    }
-
+  const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
-    setName("");
-    setPassword("");
+
+    try {
+      const res = await api.post("http://127.0.0.1:8000/api/token/", {
+        username: name,
+        password: password,
+      });
+      localStorage.setItem(ACCESS_TOKEN, res.data.access);
+      localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+      navigate("/home/upload")
+    } catch (error) {
+      alert(error);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  console.log(loading);
 
   return (
     <Stack
@@ -45,7 +52,7 @@ function Login() {
         <Stack
           sx={{
             display: {
-              xs: 'flex',
+              xs: "flex",
               sm: "flex",
               md: "none",
             },
@@ -56,7 +63,7 @@ function Login() {
         <Stack
           sx={{
             display: {
-              xs: 'none',
+              xs: "none",
               sm: "none",
               md: "flex",
             },
@@ -87,7 +94,7 @@ function Login() {
                   },
                   color: "#7FD1AE",
                   fontWeight: "bold",
-                  textAlign: {xs: 'center', md: 'left'},
+                  textAlign: { xs: "center", md: "left" },
                   fontSize: {
                     xs: "2rem",
                     sm: "2.25rem",
@@ -95,7 +102,7 @@ function Login() {
                     lg: "3rem",
                   },
                   textTransform: "uppercase",
-                  fontFamily: 'Young Serif'
+                  fontFamily: "Young Serif",
                 }}
               >
                 DermAI
@@ -110,7 +117,7 @@ function Login() {
                     md: "1.3rem",
                     lg: "1.55rem",
                   },
-                  fontFamily: 'Outfit'
+                  fontFamily: "Outfit",
                 }}
               >
                 <span
@@ -139,7 +146,7 @@ function Login() {
               sx={{
                 backgroundImage: `url(${logsignimg})`,
                 borderRadius: "1rem",
-                width: { xs: "20rem", sm: "25rem",},
+                width: { xs: "20rem", sm: "25rem" },
               }}
             >
               <form onSubmit={handleSubmit}>
@@ -161,17 +168,17 @@ function Login() {
                     },
                     textTransform: "uppercase",
                     fontWeight: "bold",
-                    fontFamily: 'Young Serif'
+                    fontFamily: "Young Serif",
                   }}
                 >
                   Log In
                 </Typography>
                 <Stack
                   spacing={{
-                    xs: "1.7rem",
-                    sm: "2.5rem",
-                    md: "2.75rem",
-                    lg: "3rem",
+                    xs: "1rem",
+                    sm: "1.5rem",
+                    md: "1.75rem",
+                    lg: "2rem",
                   }}
                   sx={{ alignItems: "center" }}
                 >
@@ -180,7 +187,6 @@ function Login() {
                     placeholder="Your Name"
                     value={name}
                     required
-                    error={nameError}
                     sx={{
                       fontSize: {
                         xs: "0.7rem",
@@ -188,7 +194,7 @@ function Login() {
                         md: "0.9rem",
                         lg: "1rem",
                       },
-                      fontFamily: 'Outfit'
+                      fontFamily: "Outfit",
                     }}
                     style={{
                       color: "#000",
@@ -203,7 +209,6 @@ function Login() {
                     type="password"
                     required
                     placeholder="Your Password"
-                    error={passwordError}
                     value={password}
                     sx={{
                       fontSize: {
@@ -212,7 +217,7 @@ function Login() {
                         md: "0.9rem",
                         lg: "1rem",
                       },
-                      fontFamily: 'Outfit'
+                      fontFamily: "Outfit",
                     }}
                     style={{
                       color: "#000",
@@ -223,10 +228,12 @@ function Login() {
                     }}
                     onChange={(e) => setPassword(e.target.value)}
                   />
+                </Stack>
                   <Stack
                     sx={{
                       paddingBottom: { xs: "4rem", sm: "4.5rem", md: "5rem" },
-                      paddingTop: { xs: "1.5rem", sm: "1.75rem", md: "2rem" },
+                      paddingTop: { xs: "2.75rem", sm: "3rem", md: "3.5rem" },
+                      alignItems: 'center'
                     }}
                   >
                     <Button
@@ -236,6 +243,7 @@ function Login() {
                         backgroundImage:
                           "linear-gradient(to right, #00C6CF, #7FD1AE)",
                         borderRadius: "5px",
+                        width: '65%',
                         color: "#333",
                         padding: {
                           xs: "0.2rem 1.5rem",
@@ -245,13 +253,12 @@ function Login() {
                         "&:hover": {
                           backgroundColor: "#e0e0e0",
                         },
-                        fontFamily: 'Young Serif'
+                        fontFamily: "Young Serif",
                       }}
                     >
                       Log In
                     </Button>
                   </Stack>
-                </Stack>
               </form>
             </Stack>
           </Stack>

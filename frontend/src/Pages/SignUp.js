@@ -5,50 +5,36 @@ import HomeHeader from "../components/HomeHeader.js";
 import logsignimg from "../assets/better.jpg";
 import LoginIcon from "@mui/icons-material/Login";
 import HamburgerHome from "../components/HamburgerHome.js";
+import axios from "../api.js";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
-  const [nameError, setNameError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [rePasswordError, setRePasswordError] = useState("");
-  const [emailError, setEmailError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
 
-    if (!email) {
-      setEmailError(true);
+    try {
+      await axios.post("http://127.0.0.1:8000/api/user/register/", {
+        username: name,
+        password: password,
+        email: email,
+      });
+      navigate("/login");
+    } catch (error) {
+      alert(error);
+    } finally {
+      setLoading(false);
     }
-
-    if (!name) {
-      setNameError(true);
-    }
-    if (!password) {
-      setPasswordError(true);
-    }
-    if (!rePassword) {
-      setRePasswordError(true);
-    }
-
-    if (
-      !name ||
-      !password ||
-      !rePassword ||
-      password !== rePassword ||
-      !email
-    ) {
-      // history.push("/home/upload");
-    }
-
-    setName("");
-    setPassword("");
-    setRePassword("");
-    setEmail("");
-    console.log("sign up seccessesful");
   };
+
+  console.log(loading);
 
   const sxinput = {
     fontSize: {
@@ -57,7 +43,7 @@ function SignUp() {
       md: "0.9rem",
       lg: "1rem",
     },
-    fontFamily: 'Outfit'
+    fontFamily: "Outfit",
   };
 
   const styleinput = {
@@ -134,7 +120,7 @@ function SignUp() {
                     lg: "3rem",
                   },
                   textTransform: "uppercase",
-                  fontFamily: 'Young Serif'
+                  fontFamily: "Young Serif",
                 }}
               >
                 DermAI
@@ -149,7 +135,7 @@ function SignUp() {
                     md: "1.3rem",
                     lg: "1.55rem",
                   },
-                fontFamily: 'Outfit'
+                  fontFamily: "Outfit",
                 }}
               >
                 <span
@@ -199,7 +185,7 @@ function SignUp() {
                     color: "#00C6CF",
                     fontWeight: "bold",
                     textTransform: "uppercase",
-                    fontFamily: 'Young Serif'
+                    fontFamily: "Young Serif",
                   }}
                 >
                   Create Account
@@ -207,8 +193,8 @@ function SignUp() {
                 <Stack
                   spacing={{
                     xs: "1rem",
-                    sm: "1.5rem",
-                    md: "2rem",
+                    sm: "1.25rem",
+                    md: "1.5rem",
                   }}
                   sx={{ alignItems: "center" }}
                 >
@@ -217,7 +203,6 @@ function SignUp() {
                     placeholder="Your Name"
                     value={name}
                     required
-                    error={nameError}
                     onChange={(e) => setName(e.target.value)}
                     sx={sxinput}
                     style={styleinput}
@@ -227,16 +212,13 @@ function SignUp() {
                     placeholder="Your Email"
                     value={email}
                     required
-                    error={emailError}
                     onChange={(e) => setEmail(e.target.value)}
                     sx={sxinput}
                     style={styleinput}
                   />
-
                   <Input
                     type="password"
                     required
-                    error={passwordError}
                     placeholder="Your Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -246,7 +228,6 @@ function SignUp() {
                   <Input
                     type="password"
                     required
-                    error={rePasswordError}
                     placeholder="Repeat Your Password"
                     value={rePassword}
                     onChange={(e) => setRePassword(e.target.value)}
@@ -256,28 +237,25 @@ function SignUp() {
                   <Typography sx={{ color: "red" }}>
                     {password !== rePassword && "password do not match"}
                   </Typography>
-
-                  <Stack>
-                    <Button
-                      type="submit"
-                      endIcon={<LoginIcon />}
-                      sx={{
-                        color: "#333",
-                        padding: "0.3rem 2rem",
-                        marginBottom: "4rem",
-                        borderRadius: "5px",
-                        backgroundImage:
-                          "linear-gradient(to right, #7FD1AE, #00C6CF)",
-
-                        "&:hover": {
-                          backgroundColor: "#e0e0e0",
-                        },
-                        fontFamily: 'Young Serif'
-                      }}
-                    >
-                      Sign Up
-                    </Button>
-                  </Stack>
+                </Stack>
+                <Stack sx={{ alignItems: "center", paddingTop: '1.5rem' }}>
+                  <Button
+                    type="submit"
+                    endIcon={<LoginIcon />}
+                    sx={{
+                      width: "65%",
+                      color: "#333",
+                      padding: "0.3rem 2rem",
+                      marginBottom: "4rem",
+                      borderRadius: "5px",
+                      backgroundImage:
+                        "linear-gradient(to right, #7FD1AE, #00C6CF)",
+                      fontFamily: "Young Serif",
+                    }}
+                    justifyContent="center"
+                  >
+                    Sign Up
+                  </Button>
                 </Stack>
               </form>
             </Stack>
