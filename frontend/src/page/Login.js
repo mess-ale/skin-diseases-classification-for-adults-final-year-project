@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import { Footer } from "../components/Footer";
 import { Button, Container, Input, Stack, Typography } from "@mui/material";
-import HomeHeader from "../components/HomeHeader";
 import LoginIcon from "@mui/icons-material/Login";
 import logsignimg from "../assets/better.jpg";
-import HamburgerHome from "../components/HamburgerHome";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import api from "../api";
@@ -13,6 +10,7 @@ function Login({ route }) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [errorUserPass, setErrorUserPass] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -28,7 +26,7 @@ function Login({ route }) {
       localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
       navigate("/home/upload")
     } catch (error) {
-      alert(error);
+      setErrorUserPass(true);
     } finally {
       setLoading(false);
     }
@@ -44,35 +42,6 @@ function Login({ route }) {
         flexDirection: "column",
       }}
     >
-      <Stack
-        sx={{
-          marginBottom: { sm: "0rem", md: "7rem" },
-        }}
-      >
-        <Stack
-          sx={{
-            display: {
-              xs: "flex",
-              sm: "flex",
-              md: "none",
-            },
-          }}
-        >
-          <HamburgerHome />
-        </Stack>
-        <Stack
-          sx={{
-            display: {
-              xs: "none",
-              sm: "none",
-              md: "flex",
-            },
-          }}
-        >
-          <HomeHeader />
-        </Stack>
-      </Stack>
-
       <Container>
         <Stack
           direction={{ sm: "column", md: "row" }}
@@ -229,6 +198,7 @@ function Login({ route }) {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Stack>
+                    {errorUserPass && <Typography sx={{ color: 'red', textAlign: 'center', paddingTop: '1rem'}}>Invalid username or password</Typography>}
                   <Stack
                     sx={{
                       paddingBottom: { xs: "4rem", sm: "4.5rem", md: "5rem" },
@@ -264,14 +234,6 @@ function Login({ route }) {
           </Stack>
         </Stack>
       </Container>
-
-      <Stack
-        sx={{
-          marginTop: "auto",
-        }}
-      >
-        <Footer />
-      </Stack>
     </Stack>
   );
 }

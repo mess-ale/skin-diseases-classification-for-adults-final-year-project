@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import { Footer } from "../components/Footer.js";
 import { Stack, Typography, Input, Button, Container } from "@mui/material";
-import HomeHeader from "../components/HomeHeader.js";
 import logsignimg from "../assets/better.jpg";
 import LoginIcon from "@mui/icons-material/Login";
-import HamburgerHome from "../components/HamburgerHome.js";
 import axios from "../api.js";
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +11,7 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [alreadyTaken, setAlreadyTaken] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -28,7 +26,12 @@ function SignUp() {
       });
       navigate("/login");
     } catch (error) {
-      alert(error);
+      // Assuming the server returns a field-specific error message
+      if (error.response.data.username) {
+        setAlreadyTaken(true);
+      } else {
+        alert(error);
+      }
     } finally {
       setLoading(false);
     }
@@ -62,35 +65,7 @@ function SignUp() {
         flexDirection: "column",
       }}
     >
-      <Stack
-        sx={{
-          marginBottom: { sm: "0rem", md: "7rem" },
-        }}
-      >
-        <Stack
-          sx={{
-            display: {
-              xs: "flex",
-              sm: "flex",
-              md: "none",
-            },
-          }}
-        >
-          <HamburgerHome />
-        </Stack>
-        <Stack
-          sx={{
-            display: {
-              xs: "none",
-              sm: "none",
-              md: "flex",
-            },
-          }}
-        >
-          <HomeHeader />
-        </Stack>
-      </Stack>
-
+     
       <Container>
         <Stack
           direction={{ sm: "column", md: "row" }}
@@ -238,7 +213,18 @@ function SignUp() {
                     {password !== rePassword && "password do not match"}
                   </Typography>
                 </Stack>
-                <Stack sx={{ alignItems: "center", paddingTop: '1.5rem' }}>
+                  {alreadyTaken && (
+                    <Typography
+                      sx={{
+                        color: "red",
+                        textAlign: "center",
+                        paddingTop: "1rem",
+                      }}
+                    >
+                      Username is already taken.
+                    </Typography>
+                  )}
+                <Stack sx={{ alignItems: "center", paddingTop: "1.5rem" }}>
                   <Button
                     type="submit"
                     endIcon={<LoginIcon />}
@@ -253,6 +239,7 @@ function SignUp() {
                       fontFamily: "Young Serif",
                     }}
                     justifyContent="center"
+                    disabled={password !== rePassword}
                   >
                     Sign Up
                   </Button>
@@ -262,14 +249,6 @@ function SignUp() {
           </Stack>
         </Stack>
       </Container>
-
-      <Stack
-        sx={{
-          marginTop: "auto",
-        }}
-      >
-        <Footer />
-      </Stack>
     </Stack>
   );
 }

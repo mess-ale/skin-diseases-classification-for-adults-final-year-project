@@ -1,12 +1,13 @@
-import Home from "./Pages/Home";
-import Login from "./Pages/Login";
-import Signup from "./Pages/SignUp";
-import Upload from "./Pages/Upload";
-import Preview from "./Pages/Preview";
-import Prediction from "./Pages/Prediction";
-import NotFound from "./components/NotFound";
-import ProtectedRoute from "./components/ProtectedRoute";
+import Home from './page/Home';
+import Login from './page/Login';
+import Signup from './page/SignUp';
+import Upload from './page/Upload';
+import Prediction from './page/Prediction';
+import Preview from './page/Preview';
+import NotFound from './components/NotFound';
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+import { ThemeProvider } from "@emotion/react";
+import theme from "./theme/ThemeProvider";
 
 function Logout() {
   localStorage.clear();
@@ -20,41 +21,38 @@ function RegisterAndLogout() {
 
 function App() {
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login route='/api/token/'/>} />
-          <Route path="/join" element={<RegisterAndLogout route='/api/user/register/'/>} />
+          <Route path="/login" element={<Login route="/api/token/" />} />
+          <Route
+            path="/join"
+            element={<RegisterAndLogout route="/api/user/register/" />}
+          />
           <Route path="/logout" element={<Logout />} />
           <Route
             path="/home/upload"
             element={
-              <ProtectedRoute>
                 <Upload />
-              </ProtectedRoute>
             }
           />
           <Route
             path="/home/preview"
             element={
-              <ProtectedRoute>
                 <Preview />
-              </ProtectedRoute>
             }
           />
           <Route
             path="/home/prediction"
             element={
-              <ProtectedRoute>
                 <Prediction />
-              </ProtectedRoute>
             }
           />
-        <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </div>
+    </ThemeProvider>
   );
 }
 
