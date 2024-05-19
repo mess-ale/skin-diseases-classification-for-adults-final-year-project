@@ -5,9 +5,11 @@ import Upload from './page/Upload';
 import Prediction from './page/Prediction';
 import Preview from './page/Preview';
 import NotFound from './components/NotFound';
+import Privacy from './page/Privacy';
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./theme/ThemeProvider";
+import ScrollToTop from './components/ScrollToTop';
 
 function Logout() {
   localStorage.clear();
@@ -23,12 +25,13 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
+      <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login route="/api/token/" />} />
+          <Route path="/login" element={<Login />} />
           <Route
             path="/join"
-            element={<RegisterAndLogout route="/api/user/register/" />}
+            element={<RegisterAndLogout />}
           />
           <Route path="/logout" element={<Logout />} />
           <Route
@@ -47,6 +50,12 @@ function App() {
             path="/home/prediction"
             element={
                 <Prediction />
+            }
+          />
+          <Route
+            path="/home/Privacy"
+            element={
+                <Privacy />
             }
           />
           <Route path="*" element={<NotFound />} />

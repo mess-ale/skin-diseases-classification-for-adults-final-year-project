@@ -20,6 +20,8 @@ const theme = createTheme({
     },
     background: {
       main: '#3f6432',
+      default: '#eff2e5',
+      last: "#e9e3cf",
     },
     text: {
       main: '#000', // Color 5

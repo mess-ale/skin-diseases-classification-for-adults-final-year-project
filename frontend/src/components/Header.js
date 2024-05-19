@@ -11,6 +11,13 @@ import {
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
+import { ACCESS_TOKEN } from "../constants";
+import DrawerUsers from "./DrawerUsers";
+
+function isLoggedIn() {
+  const token = localStorage.getItem(ACCESS_TOKEN);
+  return token != null;
+}
 
 function Header() {
   const theme = useTheme();
@@ -21,42 +28,38 @@ function Header() {
   const Links = () => {
     return (
       <>
-        <ScrollLink to="section1" smooth={true} duration={500} offset={-100}>
-          <Button className="buttonStyle" id="About" onClick={handlOpenClose2}>
+        <ScrollLink to="section1" smooth={true} duration={1000} offset={-100}>
+          <Button className="buttonStyle" onClick={handlOpenClose2}>
             About
           </Button>
         </ScrollLink>
-        <ScrollLink to="section2" smooth={true} duration={500} offset={-100}>
+        <ScrollLink to="section2" smooth={true} duration={1000} offset={-100}>
           <Button
             className="buttonStyle"
-            id="Our Services"
             onClick={handlOpenClose2}
           >
             Our Services
           </Button>
         </ScrollLink>
-        <ScrollLink to="section3" smooth={true} duration={500} offset={-100}>
+        <ScrollLink to="section3" smooth={true} duration={1000} offset={-100}>
           <Button
             className="buttonStyle"
-            id="Our Team"
             onClick={handlOpenClose2}
           >
             Our Team
           </Button>
         </ScrollLink>
-        <ScrollLink to="section4" smooth={true} duration={500} offset={-100}>
+        <ScrollLink to="section4" smooth={true} duration={1000} offset={-100}>
           <Button
             className="buttonStyle"
-            id="Reviews"
             onClick={handlOpenClose2}
           >
             Reviews
           </Button>
         </ScrollLink>
-        <ScrollLink to="section5" smooth={true} duration={500} offset={-100}>
+        <ScrollLink to="section5" smooth={true} duration={1000} offset={-100}>
           <Button
             className="buttonStyle"
-            id="Contact"
             onClick={handlOpenClose2}
           >
             Contact
@@ -127,7 +130,8 @@ function Header() {
             <Links />
           </Stack>
         </Stack>
-        <Link to={"/login"}>
+
+        {!isLoggedIn() ? <Link to={"/login"}>
           <Button
             className="fontStyle"
             sx={{
@@ -142,7 +146,8 @@ function Header() {
           >
             log in / Join
           </Button>
-        </Link>
+        </Link> : <DrawerUsers />}
+        
       </Stack>
       <Slide
         in={openClose}

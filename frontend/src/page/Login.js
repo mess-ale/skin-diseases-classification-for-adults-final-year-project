@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import { Button, Container, Input, Stack, Typography } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 import logsignimg from "../assets/better.jpg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import api from "../api";
+import { useTheme } from "@emotion/react";
 
-function Login({ route }) {
+function Login() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorUserPass, setErrorUserPass] = useState(false);
   const navigate = useNavigate();
+  const theme = useTheme()
 
   const handleSubmit = async (e) => {
     setLoading(true);
@@ -24,7 +26,7 @@ function Login({ route }) {
       });
       localStorage.setItem(ACCESS_TOKEN, res.data.access);
       localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-      navigate("/home/upload")
+      navigate("/");
     } catch (error) {
       setErrorUserPass(true);
     } finally {
@@ -32,19 +34,17 @@ function Login({ route }) {
     }
   };
 
-  console.log(loading);
-
   return (
     <Stack
       sx={{
-        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
+        paddingTop: {xs: '4rem',sm: "10rem"},
       }}
     >
-      <Container>
+      <Container maxWidth={"md"}>
         <Stack
-          direction={{ sm: "column", md: "row" }}
+          direction={{ xs: "column", sm: "row" }}
           spacing={{ xs: "4rem", sm: "4rem", md: "1rem", lg: "2rem" }}
         >
           <Stack
@@ -61,7 +61,6 @@ function Login({ route }) {
                     md: "5rem 0rem 1.75rem 0rem",
                     lg: "6rem 0rem 1.5rem 0rem",
                   },
-                  color: "#7FD1AE",
                   fontWeight: "bold",
                   textAlign: { xs: "center", md: "left" },
                   fontSize: {
@@ -89,16 +88,24 @@ function Login({ route }) {
                   fontFamily: "Outfit",
                 }}
               >
-                <span
-                  style={{
-                    color: "#00C6CF",
-                    fontWeight: "bold",
+                Welcome back! Please sign in to access your DermAI account
+                <Typography
+                  sx={{
+                    textAlign: "justify",
+                    fontSize: {
+                      xs: "1.1rem",
+                      sm: "1rem",
+                      md: "1.31rem",
+                      lg: "1.55rem",
+                    },
+                    fontFamily: "Outfit",
                   }}
                 >
-                  Welcome back!
-                </span>{" "}
-                Please sign in to access your DermAI account and unlock the
-                power of advanced skin analysis.
+                  Don't have an account?
+                  <Link to={"/join"}>
+                    <Button color="background">Register</Button>
+                  </Link>
+                </Typography>
               </Typography>
             </Stack>
           </Stack>
@@ -115,13 +122,13 @@ function Login({ route }) {
               sx={{
                 backgroundImage: `url(${logsignimg})`,
                 borderRadius: "1rem",
-                width: { xs: "20rem", sm: "25rem" },
+                width: {xs: '65%', sm: '100%'}
               }}
             >
               <form onSubmit={handleSubmit}>
                 <Typography
                   sx={{
-                    color: "#00C6CF",
+                    color: theme.palette.primary.main,
                     textAlign: "center",
                     padding: {
                       xs: "1.2rem",
@@ -198,37 +205,46 @@ function Login({ route }) {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Stack>
-                    {errorUserPass && <Typography sx={{ color: 'red', textAlign: 'center', paddingTop: '1rem'}}>Invalid username or password</Typography>}
-                  <Stack
+                {errorUserPass && (
+                  <Typography
                     sx={{
-                      paddingBottom: { xs: "4rem", sm: "4.5rem", md: "5rem" },
-                      paddingTop: { xs: "2.75rem", sm: "3rem", md: "3.5rem" },
-                      alignItems: 'center'
+                      color: "red",
+                      textAlign: "center",
+                      paddingTop: "1rem",
                     }}
                   >
-                    <Button
-                      type="submit"
-                      endIcon={<LoginIcon />}
-                      sx={{
-                        backgroundImage:
-                          "linear-gradient(to right, #00C6CF, #7FD1AE)",
-                        borderRadius: "5px",
-                        width: '65%',
-                        color: "#333",
-                        padding: {
-                          xs: "0.2rem 1.5rem",
-                          sm: "0.2rem 1.75rem",
-                          md: "0.3rem 2rem",
-                        },
-                        "&:hover": {
-                          backgroundColor: "#e0e0e0",
-                        },
-                        fontFamily: "Young Serif",
-                      }}
-                    >
-                      Log In
-                    </Button>
-                  </Stack>
+                    Invalid username or password
+                  </Typography>
+                )}
+                <Stack
+                  sx={{
+                    paddingBottom: { xs: "4rem", sm: "4.5rem", md: "5rem" },
+                    paddingTop: { xs: "2.75rem", sm: "3rem", md: "3.5rem" },
+                    alignItems: "center",
+                  }}
+                >
+                  <Button
+                    type="submit"
+                    endIcon={<LoginIcon />}
+                    sx={{
+                      borderRadius: "5px",
+                      background: theme.palette.primary.main,
+                      width: "65%",
+                      color: "#333",
+                      padding: {
+                        xs: "0.2rem 1.5rem",
+                        sm: "0.2rem 1.75rem",
+                        md: "0.3rem 2rem",
+                      },
+                      "&:hover":{
+                        background: theme.palette.primary.main
+                      },
+                      fontFamily: "Young Serif",
+                    }}
+                  >
+                    Log In
+                  </Button>
+                </Stack>
               </form>
             </Stack>
           </Stack>

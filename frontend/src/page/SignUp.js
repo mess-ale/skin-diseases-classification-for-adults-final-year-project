@@ -4,6 +4,7 @@ import logsignimg from "../assets/better.jpg";
 import LoginIcon from "@mui/icons-material/Login";
 import axios from "../api.js";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "@emotion/react";
 
 function SignUp() {
   const [name, setName] = useState("");
@@ -13,6 +14,7 @@ function SignUp() {
   const [loading, setLoading] = useState(false);
   const [alreadyTaken, setAlreadyTaken] = useState(false);
   const navigate = useNavigate();
+  const theme = useTheme()
 
   const handleSubmit = async (e) => {
     setLoading(true);
@@ -60,15 +62,15 @@ function SignUp() {
   return (
     <Stack
       sx={{
-        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
+        paddingTop: {xs: '4rem',sm: "10rem"},
       }}
     >
      
-      <Container>
+      <Container maxWidth={"md"}>
         <Stack
-          direction={{ sm: "column", md: "row" }}
+          direction={{ xs: "column", sm: "row" }}
           spacing={{ xs: "4rem", sm: "3rem", md: "1rem", lg: "2rem" }}
         >
           <Stack
@@ -85,7 +87,6 @@ function SignUp() {
                     md: "5rem 0rem 1.5rem 0rem",
                     lg: "6rem 0rem 1.5rem 0rem",
                   },
-                  color: "#7FD1AE",
                   fontWeight: "bold",
                   textAlign: { xs: "center", md: "left" },
                   fontSize: {
@@ -139,7 +140,7 @@ function SignUp() {
               sx={{
                 backgroundImage: `url(${logsignimg})`,
                 borderRadius: "1rem",
-                width: { xs: "20rem", sm: "26rem" },
+                width: {xs: '65%', sm: '100%'}
               }}
             >
               <form onSubmit={handleSubmit}>
@@ -157,7 +158,7 @@ function SignUp() {
                       sm: "1.25rem",
                       md: "1.5rem",
                     },
-                    color: "#00C6CF",
+                    color: theme.palette.primary.main,
                     fontWeight: "bold",
                     textTransform: "uppercase",
                     fontFamily: "Young Serif",
@@ -233,10 +234,11 @@ function SignUp() {
                       color: "#333",
                       padding: "0.3rem 2rem",
                       marginBottom: "4rem",
+                      background: theme.palette.primary.main,
                       borderRadius: "5px",
-                      backgroundImage:
-                        "linear-gradient(to right, #7FD1AE, #00C6CF)",
-                      fontFamily: "Young Serif",
+                      "&:hover":{
+                        background: theme.palette.primary.main
+                      },
                     }}
                     justifyContent="center"
                     disabled={password !== rePassword}

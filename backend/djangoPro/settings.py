@@ -71,11 +71,14 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'djangoPro.urls'
-
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # Include your project's static directory
+]
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

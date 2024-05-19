@@ -1,10 +1,19 @@
 import React, { useState } from "react";
-import image1 from "../assets/Gemini_Generated_Image (1).jpg";
-import { Button, Container, Input, Stack, SvgIcon, Typography } from "@mui/material";
+import image1 from "../assets/Gemini_Generated.png";
+import {
+  Button,
+  Container,
+  Input,
+  Stack,
+  SvgIcon,
+  Typography,
+} from "@mui/material";
 import { FileUpload } from "@mui/icons-material";
+import { useTheme } from "@emotion/react";
 
 function Upload() {
   const [imageSrc, setImageSrc] = useState("");
+  const theme = useTheme();
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -19,22 +28,17 @@ function Upload() {
   return (
     <Stack
       sx={{
-        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
       }}
     >
-     
-      <Container>
+      <Container maxWidth={"md"}>
         <Stack
-          direction={{ sm: "column", md: "row" }}
-          spacing={{ xs: "4rem", sm: "4rem", md: "2rem", lg: "2rem" }}
+          direction={{ xs: "column", sm: "row" }}
+          spacing={{ xs: "3rem", sm: "3rem", md: "2rem", lg: "2rem" }}
         >
           <Stack
             spacing={{ xs: "1rem", sm: "1.5rem", md: "2rem", lg: "2.5rem" }}
-            sx={{
-              width: { xs: "100%" },
-            }}
           >
             <Stack>
               <Typography
@@ -51,7 +55,6 @@ function Upload() {
                     md: "4.5rem 0rem 2rem 2.5rem",
                     lg: "5rem 0rem 0rem 0rem",
                   },
-                  color: "#00C6CF",
                   lineHeight: "1.5",
                   textAlign: "justify",
                   fontFamily: "Outfit",
@@ -76,16 +79,15 @@ function Upload() {
               <Button
                 className="label"
                 startIcon={<SvgIcon component={FileUpload} />}
-                style={{
-                  padding: "0.8rem 1.5rem",
-                  fontFamily: "Young Serif",
-                  textAlign: "center",
-                  textDecoration: "none",
-                  backgroundImage:
-                    "linear-gradient(to right, #00C6CF, #7FD1AE)",
-                  color: "#E8EAED",
-                  borderRadius: "4px",
-                  width: "25%",
+                sx={{
+                  border: `solid 1px ${theme.palette.text.main}`,
+                  padding: "0.6rem 2rem 0.6rem 2rem",
+                  borderRadius: "1.5rem",
+                  color: theme.palette.text.main,
+                  "&:hover": {
+                    color: theme.palette.primary.main,
+                    background: "#000",
+                  },
                 }}
                 onClick={() => {
                   document.getElementById("upload-input").click();
@@ -111,12 +113,7 @@ function Upload() {
               alignItems: "center",
             }}
           >
-            <Stack
-              alignContent={"center"}
-              sx={{
-                width: { xs: "20rem", sm: "25rem" },
-              }}
-            >
+            <Stack alignContent={"center"} sx={{ width: {xs: '70%', sm: '100%'}, height: {xs: '70%', sm: '100%'}}}>
               {imageSrc ? (
                 <Stack spacing={"1rem"}>
                   <img
@@ -124,6 +121,7 @@ function Upload() {
                     className="dynamicimage"
                     src={imageSrc}
                     alt="your sample"
+                    width={"100%"}
                   />
                   <Typography
                     sx={{
@@ -132,7 +130,7 @@ function Upload() {
                         sm: "1.1rem",
                         md: "1.2rem",
                       },
-                      color: "#00C6CF",
+                      color: theme.palette.text.main,
                       textAlign: "center",
                     }}
                   >
@@ -144,6 +142,7 @@ function Upload() {
                   <img
                     style={{ alignItems: "center", borderRadius: "0.8rem" }}
                     className="dynamicimage"
+                    width={"100%"}
                     src={image1}
                     alt="your sample"
                   />
@@ -154,7 +153,7 @@ function Upload() {
                         sm: "1.2rem",
                         md: "1.3rem",
                       },
-                      color: "#00C6CF",
+                      color: theme.palette.text.main,
                       textAlign: "center",
                     }}
                   >
@@ -166,7 +165,6 @@ function Upload() {
           </Stack>
         </Stack>
       </Container>
-
     </Stack>
   );
 }
