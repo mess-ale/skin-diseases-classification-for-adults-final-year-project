@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, ClassificationResult, SkinImage, SkinDisease
+from .models import User, SkinImage, SkinDisease
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
@@ -19,11 +19,6 @@ class UserSerializer(serializers.ModelSerializer):
             email=validated_data['email']
         )
         return user
-
-class ClassificationResultSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ClassificationResult
-        fields = '__all__'
 
 class SkinImageSerializer(serializers.ModelSerializer):
     class Meta:

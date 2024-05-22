@@ -76,7 +76,7 @@ export const Footer = () => {
             </Stack>
             <Stack alignItems={"center"} direction={"row"} spacing={"1rem"}>
               <Email />
-              <Typography>Worldview@gmail.com</Typography>
+              <Typography>skindisease@gmail.com</Typography>
             </Stack>
             <Stack direction={"row"} paddingTop={"2rem"}>
               <IconButton>

@@ -11,13 +11,30 @@ import {
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
-import { ACCESS_TOKEN } from "../constants";
+import { ACCESS_TOKEN, TOKEN_EXPIRATION } from "../constants";
 import DrawerUsers from "./DrawerUsers";
 
 function isLoggedIn() {
   const token = localStorage.getItem(ACCESS_TOKEN);
-  return token != null;
+  
+  // Check if token exists
+  if (token === null) {
+    return false;
+  }
+  
+  // Check if token is expired
+  const expirationTime = localStorage.getItem(TOKEN_EXPIRATION);
+  if (expirationTime !== null && Date.now() > parseInt(expirationTime)) {
+    // Token has expired, remove it from localStorage
+    localStorage.removeItem(ACCESS_TOKEN);
+    localStorage.removeItem(TOKEN_EXPIRATION);
+    return false;
+  }
+  
+  return true;
 }
+
+console.log(localStorage.getItem(TOKEN_EXPIRATION))
 
 function Header() {
   const theme = useTheme();
@@ -131,7 +148,7 @@ function Header() {
           </Stack>
         </Stack>
 
-        {!isLoggedIn() ? <Link to={"/login"}>
+        { !isLoggedIn() ? <Link to={"/login"}>
           <Button
             className="fontStyle"
             sx={{

@@ -83,7 +83,7 @@ function Contact() {
                 <Email color='primary'/>
               </IconButton>
               <Typography variant="body1" sx={{ ml: 1 }}>
-                worldview@gmail.com
+                skindisease@gmail.com
               </Typography>
             </Box>
             <Typography variant="body1">

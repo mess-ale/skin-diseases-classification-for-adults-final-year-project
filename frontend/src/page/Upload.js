@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import image1 from "../assets/Gemini_Generated.png";
 import {
   Button,
   Container,
+  Grid,
   Input,
   Stack,
   SvgIcon,
@@ -10,21 +11,62 @@ import {
 } from "@mui/material";
 import { FileUpload } from "@mui/icons-material";
 import { useTheme } from "@emotion/react";
+import axios from "../api";
 
 function Upload() {
   const [imageSrc, setImageSrc] = useState("");
+  const [predect, setPredict] = useState("use your image");
+  const [diseaseData, setDiseaseData] = useState(null);
+
   const theme = useTheme();
 
-  const handleFileUpload = (event) => {
+  const handleFileUpload = async (event) => {
     const file = event.target.files[0];
-    const reader = new FileReader();
+    const formData = new FormData();
+    formData.append("image_file", file);
 
-    reader.onload = () => {
-      setImageSrc(reader.result);
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/upload/",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      setPredict(response.data.predictions);
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImageSrc(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (predect !== "use your image") {
+        try {
+          const response = await fetch(
+            `http://127.0.0.1:8000/api/disease/${predect}/`
+          );
+          if (!response.ok) {
+            throw new Error("Failed to fetch disease data");
+          }
+          const data = await response.json();
+          setDiseaseData(data);
+        } catch (error) {
+          alert(error);
+        }
+      }
     };
 
-    reader.readAsDataURL(file);
-  };
+    fetchData();
+  }, [predect]);
+
   return (
     <Stack
       sx={{
@@ -33,137 +75,158 @@ function Upload() {
       }}
     >
       <Container maxWidth={"md"}>
-        <Stack
-          direction={{ xs: "column", sm: "row" }}
-          spacing={{ xs: "3rem", sm: "3rem", md: "2rem", lg: "2rem" }}
-        >
-          <Stack
-            spacing={{ xs: "1rem", sm: "1.5rem", md: "2rem", lg: "2.5rem" }}
-          >
-            <Stack>
-              <Typography
-                sx={{
-                  fontSize: {
-                    xs: "1.1rem",
-                    sm: "1.25rem",
-                    md: "1.25rem",
-                    lg: "1.45rem",
-                  },
-                  padding: {
-                    xs: "1rem 2rem 1rem 2rem",
-                    sm: "2rem 3rem 0rem 3rem",
-                    md: "4.5rem 0rem 2rem 2.5rem",
-                    lg: "5rem 0rem 0rem 0rem",
-                  },
-                  lineHeight: "1.5",
-                  textAlign: "justify",
-                  fontFamily: "Outfit",
-                }}
-              >
-                Get insights into your health. Upload a picture and our AI
-                technology will predict potential disease classifications.
-              </Typography>
-            </Stack>
-
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={7}>
             <Stack
-              alignItems={"center"}
               sx={{
-                paddingTop: {
-                  xs: "0rem",
-                  sm: "3rem",
-                  md: "0rem",
-                  lg: "0rem",
-                },
+                boxShadow: "0 0 2px 1px rgba(0, 0, 0, 0.3)",
+                borderRadius: "0.4rem",
               }}
             >
-              <Button
-                className="label"
-                startIcon={<SvgIcon component={FileUpload} />}
+              <Stack sx={{ margin: "1.5rem" }} spacing={2}>
+                <Stack>
+                  {imageSrc ? (
+                    <Stack>
+                      <img
+                        style={{
+                          color: 'transparent',
+                          width: '100%',
+                          height: 'auto',
+                          backgroundSize: 'cover',
+                          backgroundPosition: '50% 50%',
+                          backgroundRepeat: 'no-repeat',
+                        }}
+                        src={imageSrc}
+                        alt="your sample"
+                      />
+                    </Stack>
+                  ) : (
+                    <Stack>
+                      <img
+                        style={{
+                          color: 'transparent',
+                          width: '100%',
+                          height: 'auto',
+                          backgroundSize: 'cover',
+                          backgroundPosition: '50% 50%',
+                          backgroundRepeat: 'no-repeat',
+                        }}
+                        src={image1}
+                        alt="your sample"
+                      />
+                    </Stack>
+                  )}
+                </Stack>
+                <Stack
+                  sx={{
+                    borderRadius: "0.4rem",
+                    boxShadow: "0 0 2px 1px rgba(0, 0, 0, 0.3)",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: {
+                        xs: "0.8rem",
+                        sm: "0.9rem",
+                        md: "1rem",
+                        lg: "1.1rem",
+                      },
+                      padding: "1rem",
+                      fontFamily: "Outfit",
+                      borderRadius: "0.4rem",
+                    }}
+                  >
+                    Get insights into your health. Upload a picture and our AI
+                    technology will predict potential disease classifications.
+                  </Typography>
+                </Stack>
+              </Stack>
+            </Stack>
+          </Grid>
+
+          <Grid item xs={12} sm={5}>
+            <Stack spacing={4}>
+              <Stack
                 sx={{
-                  border: `solid 1px ${theme.palette.text.main}`,
-                  padding: "0.6rem 2rem 0.6rem 2rem",
-                  borderRadius: "1.5rem",
-                  color: theme.palette.text.main,
-                  "&:hover": {
-                    color: theme.palette.primary.main,
-                    background: "#000",
-                  },
-                }}
-                onClick={() => {
-                  document.getElementById("upload-input").click();
+                  borderRadius: "0.4rem",
+                  boxShadow: "0 0 2px 1px rgba(0, 0, 0, 0.3)",
                 }}
               >
-                Upload
-              </Button>
-              <Input
-                type="file"
-                id="upload-input"
-                accept="image/*"
-                style={{ display: "none" }}
-                onChange={handleFileUpload}
-              />
-            </Stack>
-          </Stack>
+                <Stack sx={{ margin: "1rem" }}>
+                  <Typography sx={{ fontWeight: "bold" }}>
+                    disease name : {predect}
+                  </Typography>
+                  <Typography>
+                    <Typography sx={{ fontWeight: "bold" }}>
+                      description
+                    </Typography>
+                    {diseaseData
+                      ? diseaseData["description"]
+                      : "This section will explain the treatment options available for the disease."}
+                  </Typography>
+                  <Typography>
+                    <Typography sx={{ fontWeight: "bold" }}>
+                      treatment
+                    </Typography>
+                    {diseaseData
+                      ? diseaseData["treatment"]
+                      : "This section will explain the treatment options available for the disease."}
+                  </Typography>
+                </Stack>
+              </Stack>
 
-          <Stack
-            width={"100%"}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Stack alignContent={"center"} sx={{ width: {xs: '70%', sm: '100%'}, height: {xs: '70%', sm: '100%'}}}>
-              {imageSrc ? (
-                <Stack spacing={"1rem"}>
-                  <img
-                    style={{ alignItems: "center", borderRadius: "0.8rem" }}
-                    className="dynamicimage"
-                    src={imageSrc}
-                    alt="your sample"
-                    width={"100%"}
+              <Stack
+                sx={{
+                  borderRadius: "0.4rem",
+                  boxShadow: "0 0 2px 1px rgba(0, 0, 0, 0.3)",
+                }}
+              >
+                <Stack sx={{ margin: "1rem" }}>
+                  <Button
+                    className="label"
+                    startIcon={<SvgIcon component={FileUpload} />}
+                    sx={{
+                      border: `solid 1px ${theme.palette.text.main}`,
+                      borderRadius: "1.5rem",
+                      color: theme.palette.primary.main,
+                      background: theme.palette.text.main,
+                      margin: "1rem",
+                      "&:hover": { color: theme.palette.text.main },
+                    }}
+                    onClick={() => {
+                      document.getElementById("upload-input").click();
+                    }}
+                  >
+                    Use your image
+                  </Button>
+                  <Input
+                    type="file"
+                    id="upload-input"
+                    accept="image/*"
+                    style={{ display: "none" }}
+                    onChange={handleFileUpload}
                   />
                   <Typography
                     sx={{
                       fontSize: {
-                        xs: "1rem",
-                        sm: "1.1rem",
-                        md: "1.2rem",
+                        xs: "0.8rem",
+                        sm: "0.9rem",
+                        md: "1rem",
+                        lg: "1.1rem",
                       },
-                      color: theme.palette.text.main,
+                      fontFamily: "Outfit",
+                      borderRadius: "0.4rem",
                       textAlign: "center",
                     }}
                   >
-                    Your sample image!!!
+                    We think data protection is important! `No data is sent.`
+                    The magic happens in your browser.
                   </Typography>
                 </Stack>
-              ) : (
-                <Stack spacing={"1rem"}>
-                  <img
-                    style={{ alignItems: "center", borderRadius: "0.8rem" }}
-                    className="dynamicimage"
-                    width={"100%"}
-                    src={image1}
-                    alt="your sample"
-                  />
-                  <Typography
-                    sx={{
-                      fontSize: {
-                        xs: "1.1rem",
-                        sm: "1.2rem",
-                        md: "1.3rem",
-                      },
-                      color: theme.palette.text.main,
-                      textAlign: "center",
-                    }}
-                  >
-                    Your sample image will be here!!!
-                  </Typography>
-                </Stack>
-              )}
+              </Stack>
             </Stack>
-          </Stack>
-        </Stack>
+          </Grid>
+        </Grid>
       </Container>
     </Stack>
   );

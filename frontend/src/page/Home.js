@@ -22,12 +22,27 @@ import {
 } from "@mui/icons-material";
 import CardComponent from "../components/CardComponent";
 import Contact from "../components/Contact";
-import { ACCESS_TOKEN } from "../constants";
+import { ACCESS_TOKEN, TOKEN_EXPIRATION } from "../constants";
 import Footer from "../components/Footer";
 
 function isLoggedIn() {
   const token = localStorage.getItem(ACCESS_TOKEN);
-  return token != null;
+  
+  // Check if token exists
+  if (token === null) {
+    return false;
+  }
+  
+  // Check if token is expired
+  const expirationTime = localStorage.getItem(TOKEN_EXPIRATION);
+  if (expirationTime !== null && Date.now() > parseInt(expirationTime)) {
+    // Token has expired, remove it from localStorage
+    localStorage.removeItem(ACCESS_TOKEN);
+    localStorage.removeItem(TOKEN_EXPIRATION);
+    return false;
+  }
+  
+  return true;
 }
 
 const services = [
@@ -165,12 +180,8 @@ function Home() {
         </Stack>
       ) : (
         <Stack
-          paddingTop={{ xs: "5rem", sm: "10rem" }}
-          sx={{
-            position: "sticky",
-            top: 0 /* Adjust top position as needed */,
-            height: "88vh",
-          }}
+          paddingTop={{ xs: "4rem", sm: "8rem" }}
+          paddingBottom={'2.5rem'}
         >
           <Upload />
         </Stack>
