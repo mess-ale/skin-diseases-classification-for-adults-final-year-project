@@ -53,7 +53,7 @@ function Login() {
                   color: {xs: theme.palette.primary.main, sm: theme.palette.text.main},
                   textAlign: "center",
                   fontSize: {
-                    xs: "1.2rem",
+                    xs: "1.75rem",
                     sm: "1.5rem",
                     md: "1.75rem",
                   },
@@ -71,12 +71,13 @@ function Login() {
                 required
                 sx={{
                   fontSize: {
-                    xs: "0.9rem",
+                    xs: "1rem",
                     sm: "0.8rem",
                     md: "0.9rem",
                     lg: "1rem",
                   },
                   fontFamily: "Outfit",
+                  fontWeight: 'bold'
                 }}
                 style={{
                   borderBottom: `1px solid ${theme.palette.text.main}`,
@@ -93,12 +94,13 @@ function Login() {
                 value={password}
                 sx={{
                   fontSize: {
-                    xs: "0.9rem",
+                    xs: "1rem",
                     sm: "0.8rem",
                     md: "0.9rem",
                     lg: "1rem",
                   },
                   fontFamily: "Outfit",
+                  fontWeight: 'bold'
                 }}
                 style={{
                   borderBottom: `1px solid ${theme.palette.text.main}`,
@@ -144,7 +146,7 @@ function Login() {
             sx={{
               textAlign: "center",
               fontSize: {
-                xs: "1.1rem",
+                xs: "1.31rem",
                 sm: "1rem",
                 md: "1.31rem",
               },
@@ -154,7 +156,7 @@ function Login() {
           >
             Don't have an account?
             <Link to={"/join"}>
-              <Button color="background">Register</Button>
+              <Button color="text">Register</Button>
             </Link>
           </Typography>
         </Stack>

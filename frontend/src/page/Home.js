@@ -11,6 +11,10 @@ import disease7 from "../assets/ISIC_0024468 7.png";
 import disease8 from "../assets/ISIC_0024468 8.png";
 import contactimg from "../assets/contactimage.png";
 import Employee from "../assets/theam.jpg";
+import Employee1 from "../assets/theam4.jpg";
+import Employee2 from "../assets/theam1.jpg";
+import Employee3 from "../assets/theam2.jpg";
+import Employee4 from "../assets/theam3.jpg";
 import { Link } from "react-router-dom";
 import { useTheme } from "@emotion/react";
 import Upload from "./Upload";
@@ -27,12 +31,12 @@ import Footer from "../components/Footer";
 
 function isLoggedIn() {
   const token = localStorage.getItem(ACCESS_TOKEN);
-  
+
   // Check if token exists
   if (token === null) {
     return false;
   }
-  
+
   // Check if token is expired
   const expirationTime = localStorage.getItem(TOKEN_EXPIRATION);
   if (expirationTime !== null && Date.now() > parseInt(expirationTime)) {
@@ -41,7 +45,7 @@ function isLoggedIn() {
     localStorage.removeItem(TOKEN_EXPIRATION);
     return false;
   }
-  
+
   return true;
 }
 
@@ -179,10 +183,7 @@ function Home() {
           </Container>
         </Stack>
       ) : (
-        <Stack
-          paddingTop={{ xs: "4rem", sm: "8rem" }}
-          paddingBottom={'2.5rem'}
-        >
+        <Stack paddingTop={{ xs: "4rem", sm: "8rem" }} paddingBottom={"2.5rem"}>
           <Upload />
         </Stack>
       )}
@@ -329,6 +330,7 @@ function Home() {
                 fontSize: { xs: "1.15rem", sm: "1.25rem", md: "1.5rem" },
                 textAlign: { xs: "center", md: "left" },
                 fontWeight: "bold",
+                color: theme.palette.primary.main
               }}
             >
               Unleash the Power of Your Skin Health
@@ -411,9 +413,13 @@ function Home() {
         >
           <Grid item xs={6} sm={4} md={3}>
             <Stack>
-              <img src={Employee} alt="black man" />
+              <img
+                src={Employee}
+                style={{ maxHeight: "45vh", minHeight: "45vh" }}
+                alt="black man"
+              />
               <Stack spacing={"0.5rem"} paddingTop={"0.5rem"}>
-                <Typography>Ron Zamir</Typography>
+                <Typography>Desta Damtew</Typography>
                 <Typography>President/CEO</Typography>
                 <Button>Connect</Button>
               </Stack>
@@ -421,9 +427,13 @@ function Home() {
           </Grid>
           <Grid item xs={6} sm={4} md={3}>
             <Stack>
-              <img src={Employee} alt="black man" />
+              <img
+                src={Employee1}
+                style={{ maxHeight: "45vh", minHeight: "45vh" }}
+                alt="black man"
+              />
               <Stack spacing={"0.5rem"} paddingTop={"0.5rem"}>
-                <Typography>Ron Zamir</Typography>
+                <Typography>Meaza Gebremariam</Typography>
                 <Typography>President/CEO</Typography>
                 <Button>Connect</Button>
               </Stack>
@@ -431,9 +441,13 @@ function Home() {
           </Grid>
           <Grid item xs={6} sm={4} md={3}>
             <Stack>
-              <img src={Employee} alt="black man" />
+              <img
+                src={Employee2}
+                style={{ maxHeight: "45vh", minHeight: "45vh" }}
+                alt="black man"
+              />
               <Stack spacing={"0.5rem"} paddingTop={"0.5rem"}>
-                <Typography>Ron Zamir</Typography>
+                <Typography>Samuel Addis </Typography>
                 <Typography>President/CEO</Typography>
                 <Button>Connect</Button>
               </Stack>
@@ -441,9 +455,13 @@ function Home() {
           </Grid>
           <Grid item xs={6} sm={4} md={3}>
             <Stack>
-              <img src={Employee} alt="black man" />
+              <img
+                src={Employee3}
+                style={{ maxHeight: "45vh", minHeight: "45vh" }}
+                alt="black man"
+              />
               <Stack spacing={"0.5rem"} paddingTop={"0.5rem"}>
-                <Typography>Ron Zamir</Typography>
+                <Typography>Aster Tsegaye</Typography>
                 <Typography>President/CEO</Typography>
                 <Button>Connect</Button>
               </Stack>
@@ -451,9 +469,13 @@ function Home() {
           </Grid>
           <Grid item xs={6} sm={4} md={3}>
             <Stack>
-              <img src={Employee} alt="black man" />
+              <img
+                src={Employee4}
+                style={{ maxHeight: "45vh", minHeight: "45vh" }}
+                alt="black man"
+              />
               <Stack spacing={"0.5rem"} paddingTop={"0.5rem"}>
-                <Typography>Ron Zamir</Typography>
+                <Typography>Hanna Fisseha</Typography>
                 <Typography>President/CEO</Typography>
                 <Button>Connect</Button>
               </Stack>
@@ -513,13 +535,15 @@ function Home() {
               >
                 <Typography
                   sx={{
-                    fontSize: { xs: "1.15rem", sm: "1.25rem", md: "1.5rem" },
+                    fontSize: { xs: "1.15rem", sm: "1.25rem", md: "1.35rem" },
                     textAlign: { xs: "center", md: "left" },
                   }}
                 >
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Cupiditate totam velit tenetur, iste et, aut asperiores
-                  cumque, consectetur nisi adipisci error ea quos sit vel
+                  "Before coming here, managing my chronic pain was a constant
+                  struggle. This clinic's approach, combining traditional
+                  medicine with cutting-edge technology, has been a
+                  game-changer. I finally feel like I'm regaining control of my
+                  health."
                 </Typography>
                 <Stack alignItems={"end"}>
                   <Typography>Jeffrey Cohen, CEO</Typography>
@@ -539,13 +563,14 @@ function Home() {
               >
                 <Typography
                   sx={{
-                    fontSize: { xs: "1.15rem", sm: "1.25rem", md: "1.5rem" },
+                    fontSize: { xs: "1.15rem", sm: "1.25rem", md: "1.35rem" },
                     textAlign: { xs: "center", md: "left" },
                   }}
                 >
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Cupiditate totam velit tenetur, iste et, aut asperiores
-                  cumque, consectetur nisi adipisci error ea quos sit vel
+                  "I was hesitant about using a new doctor at my age, but the
+                  staff here has put me at ease. They're incredibly patient and
+                  explain everything clearly. The treatments have given me
+                  renewed energy and mobility. thanks"
                 </Typography>
                 <Stack alignItems={"end"}>
                   <Typography>Jeffrey Cohen, CEO</Typography>
@@ -565,13 +590,14 @@ function Home() {
               >
                 <Typography
                   sx={{
-                    fontSize: { xs: "1.15rem", sm: "1.25rem", md: "1.5rem" },
+                    fontSize: { xs: "1.15rem", sm: "1.25rem", md: "1.35rem" },
                     textAlign: { xs: "center", md: "left" },
                   }}
                 >
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Cupiditate totam velit tenetur, iste et, aut asperiores
-                  cumque, consectetur nisi adipisci error ea quos sit vel
+                  "Finding childcare for doctor appointments is usually a
+                  nightmare. This clinic's flexible hours and telehealth options
+                  have been a lifesaver. Plus, the doctors are wonderful with
+                  kids, putting both of us at ease."
                 </Typography>
                 <Stack alignItems={"end"}>
                   <Typography>Jeffrey Cohen, CEO</Typography>

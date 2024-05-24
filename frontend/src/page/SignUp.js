@@ -38,12 +38,13 @@ function SignUp() {
 
   const sxinput = {
     fontSize: {
-      xs: "0.9rem",
+      xs: "1rem",
       sm: "0.8rem",
       md: "0.9rem",
       lg: "1rem",
     },
     fontFamily: "Outfit",
+    fontWeight: 'bold'
   };
 
   const styleinput = {
@@ -85,7 +86,7 @@ function SignUp() {
                 sx={{
                   textAlign: "center",
                   fontSize: {
-                    xs: "1rem",
+                    xs: "1.5rem",
                     sm: "1.25rem",
                     md: "1.5rem",
                   },
