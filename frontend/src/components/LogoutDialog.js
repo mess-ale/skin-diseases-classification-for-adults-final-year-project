@@ -1,4 +1,3 @@
-import { useTheme } from "@emotion/react";
 import {
   Button,
   Dialog,
@@ -14,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 const LogoutDialog = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const theme = useTheme();
 
   const handleClickOpen = () => {
     setOpen(true);

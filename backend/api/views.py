@@ -2,12 +2,11 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework import generics, viewsets, status
+from rest_framework import generics
 from rest_framework.response import Response
 from .models import User, SkinImage, SkinDisease
 from .serializers import UserSerializer, SkinImageSerializer
 from rest_framework.generics import GenericAPIView
-from django.shortcuts import get_object_or_404
 import tensorflow as tf
 import numpy as np
 import cv2

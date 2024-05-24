@@ -162,7 +162,7 @@ function Upload() {
                     </Typography>
                     {diseaseData
                       ? diseaseData["description"]
-                      : "This section will explain the treatment options available for the disease."}
+                      : "This section will explain the description options available for the disease."}
                   </Typography>
                   <Typography>
                     <Typography sx={{ fontWeight: "bold" }}>
