@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import generics
 from rest_framework.response import Response
 from .models import User, SkinImage, SkinDisease
-from .serializers import UserSerializer, SkinImageSerializer
+from .serializers import UserSerializer, SkinImageSerializer, AppointmentSerializer, ContactFormSerializer
 from rest_framework.generics import GenericAPIView
 import tensorflow as tf
 import numpy as np
@@ -32,6 +32,16 @@ def load_model():
 class CreateUsersViews(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [AllowAny]
+
+class CreateAppointmentViews(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = AppointmentSerializer
+    permission_classes = [AllowAny]
+
+class CreateContacttViews(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = ContactFormSerializer
     permission_classes = [AllowAny]
 
 class UserProfileAPIView(APIView):

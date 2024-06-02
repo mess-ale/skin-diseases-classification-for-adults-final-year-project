@@ -6,10 +6,13 @@ import Prediction from './page/Prediction';
 import Preview from './page/Preview';
 import NotFound from './components/NotFound';
 import Privacy from './page/Privacy';
+import DoctorAppointmentForm from './page/DoctorAppointmentForm';
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./theme/ThemeProvider";
 import ScrollToTop from './components/ScrollToTop';
+import ContactSuccess from './components/ContactSuccess';
+import AppointmentSuccess from './components/AppointmentSuccess';
 
 function Logout() {
   localStorage.clear();
@@ -56,6 +59,24 @@ function App() {
             path="/home/Privacy"
             element={
                 <Privacy />
+            }
+          />
+          <Route
+            path="/home/Appointment"
+            element={
+                <DoctorAppointmentForm />
+            }
+          />
+          <Route
+            path="/home/ContactSuccess"
+            element={
+                <ContactSuccess />
+            }
+          />
+          <Route
+            path="/home/AppointmentSuccess"
+            element={
+                <AppointmentSuccess />
             }
           />
           <Route path="*" element={<NotFound />} />

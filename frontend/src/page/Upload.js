@@ -12,6 +12,7 @@ import {
 import { FileUpload } from "@mui/icons-material";
 import { useTheme } from "@emotion/react";
 import axios from "../api";
+import { Link } from "react-router-dom";
 
 function Upload() {
   const [imageSrc, setImageSrc] = useState("");
@@ -89,12 +90,12 @@ function Upload() {
                     <Stack>
                       <img
                         style={{
-                          color: 'transparent',
-                          width: '100%',
-                          height: 'auto',
-                          backgroundSize: 'cover',
-                          backgroundPosition: '50% 50%',
-                          backgroundRepeat: 'no-repeat',
+                          color: "transparent",
+                          width: "100%",
+                          height: "auto",
+                          backgroundSize: "cover",
+                          backgroundPosition: "50% 50%",
+                          backgroundRepeat: "no-repeat",
                         }}
                         src={imageSrc}
                         alt="your sample"
@@ -104,12 +105,12 @@ function Upload() {
                     <Stack>
                       <img
                         style={{
-                          color: 'transparent',
-                          width: '100%',
-                          height: 'auto',
-                          backgroundSize: 'cover',
-                          backgroundPosition: '50% 50%',
-                          backgroundRepeat: 'no-repeat',
+                          color: "transparent",
+                          width: "100%",
+                          height: "auto",
+                          backgroundSize: "cover",
+                          backgroundPosition: "50% 50%",
+                          backgroundRepeat: "no-repeat",
                         }}
                         src={image1}
                         alt="your sample"
@@ -168,9 +169,28 @@ function Upload() {
                     <Typography sx={{ fontWeight: "bold" }}>
                       treatment
                     </Typography>
-                    {diseaseData
-                      ? diseaseData["treatment"]
-                      : "This section will explain the treatment options available for the disease."}
+                    {diseaseData ? (
+                      <Stack>
+                        {diseaseData["treatment"]}
+                        <Link to="/home/Appointment">
+                          <Button
+                            sx={{
+                              border: `solid 1px ${theme.palette.text.main}`,
+                              borderRadius: "1.5rem",
+                              color: theme.palette.primary.main,
+                              background: theme.palette.text.main,
+                              margin: '1rem 0',
+                              "&:hover": { color: theme.palette.text.main },
+                            }}
+                            fullWidth
+                          >
+                            Schedule Appointment
+                          </Button>
+                        </Link>
+                      </Stack>
+                    ) : (
+                      "This section will explain the treatment options available for the disease."
+                    )}
                   </Typography>
                 </Stack>
               </Stack>

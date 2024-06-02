@@ -11,3 +11,15 @@ class SkinDisease(models.Model):
     disease_name = models.CharField(max_length=100)
     description = models.TextField()
     treatment = models.TextField()
+
+class Appointment(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField(unique=True)
+    date = models.DateField()
+    time = models.TimeField()
+    disease = models.CharField(max_length=255, blank=True)
+
+class ContactForm(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    message = models.TextField()

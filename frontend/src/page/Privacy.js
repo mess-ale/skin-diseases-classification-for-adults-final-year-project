@@ -32,46 +32,41 @@ function Prediction() {
               A legal disclaimer
             </Typography>
             <Typography sx={{ width: { xs: "100%", md: "70%" } }}>
-              {/* Privacy Policy Content */}
-              At Worldview Training and Consulting Service PLC, we value and
-              respect your privacy. This Privacy Policy explains how we collect,
-              use, disclose, and protect your personal information when you
-              visit our website. By accessing and using our website, you consent
-              to the practices described in this Privacy Policy.
-              {/* Information We Collect Section */}
+              The images you upload to our skin disease classification service
+              are used solely for the purpose of providing you with a
+              classification result. We understand the sensitivity of your
+              health information and take data privacy very seriously. Here's
+              what you can expect:
               <Typography variant="h5" component="h3" sx={{ mt: 4 }}>
-                Information We Collect
+                Limited Use
               </Typography>
               <Typography sx={{ width: { xs: "100%", md: "70%" } }}>
-                When you visit our website, we may collect certain information
-                automatically, such as your IP address, browser type, device
-                information, and browsing behavior. We may also collect personal
-                information that you voluntarily provide to us through contact
-                forms or when subscribing to our newsletters.
+                Your uploaded images are strictly used for classification and
+                are not used for any other purpose.
               </Typography>
               {/* Use of Collected Information Section */}
-              <Typography variant="h5" component="h3" sx={{ mt: 4 }}>
-                Use of Collected Information
-              </Typography>
-              <Typography sx={{ width: { xs: "100%", md: "70%" } }}>
-                We use the information we collect to improve our website,
-                provide relevant content and services, respond to inquiries, and
-                communicate with you. We may also use your information to send
-                promotional materials or updates about our offerings, but only
-                if you have provided your consent to receive such
-                communications.
-              </Typography>
-              {/* Data Security Section */}
               <Typography variant="h5" component="h3" sx={{ mt: 4 }}>
                 Data Security
               </Typography>
               <Typography sx={{ width: { xs: "100%", md: "70%" } }}>
-                We implement appropriate security measures to protect your
-                personal information from unauthorized access, disclosure,
-                alteration, or destruction. However, please be aware that no
-                method of transmission over the internet or electronic storage
-                is 100% secure. While we strive to protect your information, we
-                cannot guarantee its absolute security.
+                We implement robust security measures to protect your images
+                from unauthorized access, disclosure, or misuse.
+              </Typography>
+              {/* Data Security Section */}
+              <Typography variant="h5" component="h3" sx={{ mt: 4 }}>
+                No Third-Party Sharing
+              </Typography>
+              <Typography sx={{ width: { xs: "100%", md: "70%" } }}>
+                We will not share your uploaded images with any third party
+                without your explicit consent.
+              </Typography>
+              <Typography variant="h5" component="h3" sx={{ mt: 4 }}>
+                Data Retention
+              </Typography>
+              <Typography sx={{ width: { xs: "100%", md: "70%" } }}>
+                We may retain your images for a limited period to improve the
+                accuracy of our service. However, we have procedures in place
+                for secure deletion upon request.
               </Typography>
             </Typography>
           </Grid>

@@ -37,7 +37,7 @@ function Contact() {
         email: formData.email,
         message: formData.message,
       });
-      navigate("/ContactSuccess");
+      navigate("/home/ContactSuccess");
     } catch (error) {
       alert(error);
     }

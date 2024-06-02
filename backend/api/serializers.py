@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, SkinImage, SkinDisease
+from .models import User, SkinImage, SkinDisease, Appointment, ContactForm
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
@@ -29,3 +29,13 @@ class SkinDiseaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = SkinDisease
         fields = '__all__'
+
+class AppointmentSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Appointment
+    fields = '__all__'  
+
+class ContactFormSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = ContactForm
+    fields = '__all__' 
