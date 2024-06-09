@@ -330,7 +330,7 @@ function Home() {
                 fontSize: { xs: "1.15rem", sm: "1.25rem", md: "1.5rem" },
                 textAlign: { xs: "center", md: "left" },
                 fontWeight: "bold",
-                color: theme.palette.primary.main
+                color: theme.palette.primary.main,
               }}
             >
               Unleash the Power of Your Skin Health
@@ -346,30 +346,31 @@ function Home() {
               <Grid item xs={12} sm={6} md={4}>
                 <CardComponent
                   imge={disease6}
-                  title={"pigmented benign keratosis"}
+                  title={"Melanocytic Nevi (nv)"}
                   desc="
-              Pigmented benign keratosis (PBK) is a general term encompassing
-              two common, non-cancerous skin growths"
+              Melanocytic nevi, commonly called moles, are growths on the skin that are usually brown or black. They are 
+              very common and most people have at least a few."
                 />
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
                 <CardComponent
                   imge={disease7}
-                  title={"squamous cell carcinoma"}
+                  title={"Melanoma (mel)"}
                   desc="
-              Squamous cell carcinoma (SCC) is the second most common type of
-              skin cancer, affecting millions of people worldwide. "
+              Melanoma is the most serious type of skin cancer. It arises from melanocytes, 
+              the cells that produce melanin, the pigment that gives skin its color. People with lighter skin tones are more susceptible."
                 />
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
                 <CardComponent
                   imge={disease8}
-                  title={"vascular lesion"}
+                  title={"Benign Keratosis-like Lesions (bkl)"}
                   desc="
-              A vascular lesion is a general term for an abnormal growth or
-              malformation of blood vessels in the skin or underlying tissues."
+              Benign keratosis-like lesions (BKL) are a broad term encompassing a group of non-cancerous
+               (benign) skin growths that resemble keratoses, which are rough, wart-like growths on the skin.
+"
                 />
               </Grid>
             </Grid>

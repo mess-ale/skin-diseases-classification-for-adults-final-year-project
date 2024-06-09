@@ -2,10 +2,10 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework.response import Response
-from .models import User, SkinImage, SkinDisease
-from .serializers import UserSerializer, SkinImageSerializer, AppointmentSerializer, ContactFormSerializer
+from .models import User, SkinImage, SkinDisease, ProfileUser
+from .serializers import UserSerializer, SkinImageSerializer, AppointmentSerializer, ContactFormSerializer, ContactProfileSerializer
 from rest_framework.generics import GenericAPIView
 import tensorflow as tf
 import numpy as np
@@ -88,3 +88,33 @@ def disease_detail(request, disease_name):
     'description': disease.description,
     'treatment': disease.treatment,
   })
+
+class DeleteAccount(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, *args, **kwargs):
+        user = self.request.user
+        user.delete()
+        return Response({"result": "user delete"})
+
+class ProfileUserCreateUpdateView(generics.CreateAPIView):
+    queryset = ProfileUser.objects.all()
+    serializer_class = ContactProfileSerializer
+
+    def perform_create(self, serializer):
+        # Check if a ProfileUser object already exists for the current user
+        try:
+            profile = ProfileUser.objects.get(User=self.request.user)
+            serializer.update(profile, serializer.validated_data)
+        except ProfileUser.DoesNotExist:
+            serializer.save(User=self.request.user)
+
+
+class ProfileUserRetrieveView(generics.RetrieveAPIView):
+    queryset = ProfileUser.objects.all()
+    serializer_class = ContactProfileSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        # Retrieve the profile for the currently logged-in user
+        return self.request.user.profileuser

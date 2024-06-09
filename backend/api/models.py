@@ -23,3 +23,11 @@ class ContactForm(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()
     message = models.TextField()
+
+class ProfileUser(models.Model):
+    User = models.OneToOneField(User, on_delete=models.CASCADE)
+    age = models.DateField()
+    gender = models.CharField(max_length=255)  # Adjust max_length as needed
+    country = models.CharField(max_length=255)  # Adjust max_length as needed
+    first_name = models.CharField(max_length=255)  # Adjust max_length as needed
+    last_name = models.CharField(max_length=255)  # Adjust max_length as needed

@@ -34,7 +34,7 @@ function CardComponent({ imge, title, desc }) {
       <CardActionArea>
         <CardMedia component="img" height="200" image={imge} alt={title} />
         <CardContent sx={{ background: theme.palette.primary.main}}>
-          <Typography gutterBottom sx={linkStyle1} component="div">
+          <Typography gutterBottom sx={linkStyle1} component="div" noWrap>
             {title}
           </Typography>
           <Typography
