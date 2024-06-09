@@ -18,7 +18,6 @@ def image_to_model_input(image_path):
     resized_image = cv2.cvtColor(resized_image, cv2.COLOR_GRAY2RGB)
 
   preprocessed_image = resized_image.astype('float32') / 255.0  
-  preprocessed = np.array(preprocessed_image).reshape(-1,28,28,3)
   return preprocessed_image
 
 def load_model():
