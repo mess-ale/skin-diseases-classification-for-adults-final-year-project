@@ -6,6 +6,7 @@ import Prediction from './page/Prediction';
 import Preview from './page/Preview';
 import NotFound from './components/NotFound';
 import Privacy from './page/Privacy';
+import SkinCareAdvice from './page/SkinCareAdvice';
 import DoctorAppointmentForm from './page/DoctorAppointmentForm';
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
@@ -77,6 +78,12 @@ function App() {
             path="/home/AppointmentSuccess"
             element={
                 <AppointmentSuccess />
+            }
+          />
+          <Route
+            path="/home/SkinCareAdvice"
+            element={
+                <SkinCareAdvice />
             }
           />
           <Route path="*" element={<NotFound />} />

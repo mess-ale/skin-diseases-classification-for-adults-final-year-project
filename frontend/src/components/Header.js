@@ -16,12 +16,12 @@ import DrawerUsers from "./DrawerUsers";
 
 function isLoggedIn() {
   const token = localStorage.getItem(ACCESS_TOKEN);
-  
+
   // Check if token exists
   if (token === null) {
     return false;
   }
-  
+
   // Check if token is expired
   const expirationTime = localStorage.getItem(TOKEN_EXPIRATION);
   if (expirationTime !== null && Date.now() > parseInt(expirationTime)) {
@@ -30,11 +30,11 @@ function isLoggedIn() {
     localStorage.removeItem(TOKEN_EXPIRATION);
     return false;
   }
-  
+
   return true;
 }
 
-console.log(localStorage.getItem(TOKEN_EXPIRATION))
+console.log(localStorage.getItem(TOKEN_EXPIRATION));
 
 function Header() {
   const theme = useTheme();
@@ -51,37 +51,30 @@ function Header() {
           </Button>
         </ScrollLink>
         <ScrollLink to="section2" smooth={true} duration={1000} offset={-100}>
-          <Button
-            className="buttonStyle"
-            onClick={handlOpenClose2}
-          >
+          <Button className="buttonStyle" onClick={handlOpenClose2}>
             Our Services
           </Button>
         </ScrollLink>
         <ScrollLink to="section3" smooth={true} duration={1000} offset={-100}>
-          <Button
-            className="buttonStyle"
-            onClick={handlOpenClose2}
-          >
+          <Button className="buttonStyle" onClick={handlOpenClose2}>
             Our Team
           </Button>
         </ScrollLink>
         <ScrollLink to="section4" smooth={true} duration={1000} offset={-100}>
-          <Button
-            className="buttonStyle"
-            onClick={handlOpenClose2}
-          >
+          <Button className="buttonStyle" onClick={handlOpenClose2}>
             Reviews
           </Button>
         </ScrollLink>
         <ScrollLink to="section5" smooth={true} duration={1000} offset={-100}>
-          <Button
-            className="buttonStyle"
-            onClick={handlOpenClose2}
-          >
+          <Button className="buttonStyle" onClick={handlOpenClose2}>
             Contact
           </Button>
         </ScrollLink>
+        <Link to={"/home/SkinCareAdvice"}>
+          <Button className="buttonStyle" onClick={handlOpenClose2}>
+            Skin Care
+          </Button>
+        </Link>
       </>
     );
   };
@@ -148,23 +141,26 @@ function Header() {
           </Stack>
         </Stack>
 
-        { !isLoggedIn() ? <Link to={"/login"}>
-          <Button
-            className="fontStyle"
-            sx={{
-              border: `solid 1px ${theme.palette.text.main}`,
-              padding: "0.2rem 1rem 0.2rem 1rem",
-              borderRadius: "1.5rem",
-              "&:hover": {
-                color: theme.palette.primary.main,
-                background: "#000",
-              },
-            }}
-          >
-            log in / Join
-          </Button>
-        </Link> : <DrawerUsers />}
-        
+        {!isLoggedIn() ? (
+          <Link to={"/login"}>
+            <Button
+              className="fontStyle"
+              sx={{
+                border: `solid 1px ${theme.palette.text.main}`,
+                padding: "0.2rem 1rem 0.2rem 1rem",
+                borderRadius: "1.5rem",
+                "&:hover": {
+                  color: theme.palette.primary.main,
+                  background: "#000",
+                },
+              }}
+            >
+              log in / Join
+            </Button>
+          </Link>
+        ) : (
+          <DrawerUsers />
+        )}
       </Stack>
       <Slide
         in={openClose}
