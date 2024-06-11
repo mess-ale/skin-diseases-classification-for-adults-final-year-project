@@ -202,7 +202,7 @@ function SkinCareAdvice() {
               </Typography>
             </li>
 
-            <li>
+            <li style={{ padding: "2rem" }}>
               <Typography>
                 See a dermatologist if you have a skin condition. Dr. Baxt says,
                 “Anyone with a skin condition that affects their quality of life

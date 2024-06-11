@@ -111,6 +111,7 @@ function Upload() {
                             backgroundSize: "cover",
                             backgroundPosition: "50% 50%",
                             backgroundRepeat: "no-repeat",
+                            borderRadius: "0.4rem",
                           }}
                           src={imageSrc}
                           alt="your sample"
@@ -126,6 +127,7 @@ function Upload() {
                             backgroundSize: "cover",
                             backgroundPosition: "50% 50%",
                             backgroundRepeat: "no-repeat",
+                            borderRadius: "0.4rem",
                           }}
                           src={image1}
                           alt="your sample"
